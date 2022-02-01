@@ -3,7 +3,7 @@ package mainApp;
 
 /**
  * Class: MainApp
- * @author Put your team name here
+ * @author Team 405
  * <br>Purpose: Top level class for CSSE220 Project containing main method 
  * <br>Restrictions: None
  */
@@ -11,7 +11,8 @@ public class MainApp {
 	
 	
 	private void runApp() {
-		System.out.println("Write your cool arcade game here!");		
+		System.out.println("Write your cool arcade game here!");
+		System.out.println("test");
 	} // runApp
 
 	/**
