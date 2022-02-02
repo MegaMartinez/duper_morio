@@ -22,7 +22,7 @@ public class MainApp {
 		System.out.println("test");
 		
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
-		frame.setSize(750, 750);
+		frame.setSize(500, 500);
 		
 		GameComponent component = new GameComponent();
 		frame.add(component, BorderLayout.CENTER);
