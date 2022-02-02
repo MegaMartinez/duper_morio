@@ -14,12 +14,12 @@ import javax.swing.Timer;
  */
 public class MainApp {
 	
-	public static final int TICK_DELAY = 200;
+	public static final int TICK_DELAY = 300;
 	
 	
 	private void runApp() {
-		System.out.println("Write your cool arcade game here!");
-		System.out.println("test");
+//		System.out.println("Write your cool arcade game here!");
+//		System.out.println("test");
 		
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
 		frame.setSize(750, 750);

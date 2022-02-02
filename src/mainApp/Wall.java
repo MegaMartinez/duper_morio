@@ -1,12 +1,13 @@
 package mainApp;
 
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 public class Wall {
 
 	private double xPos;
 	private double yPos;
-	private final double LENGTH = 100;
+	private final double LENGTH = 50;
 	private final double WIDTH = 50;
 	private Rectangle2D.Double rect;
 	
@@ -18,6 +19,10 @@ public class Wall {
 	
 	public boolean collision(Rectangle2D.Double hero) {
 		return this.rect.contains(hero);
+	}
+	
+	public void drawOn(Graphics2D g2) {
+		g2.fill(rect);
 	}
 	
 }

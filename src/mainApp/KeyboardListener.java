@@ -2,6 +2,7 @@ package mainApp;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
 
 public class KeyboardListener implements KeyListener {
 
@@ -66,6 +67,13 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_UP:
 			this.component.moveHero('D');
 			break;
+		case KeyEvent.VK_U:
+			try {
+			this.component.loadLevel(1);
+			} catch (FileNotFoundException error) {
+				System.out.println("Level filename got borked.");
+				System.exit(1);
+			}
 		}
 	}
 

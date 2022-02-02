@@ -14,8 +14,8 @@ public abstract class Character {
 	protected Rectangle2D.Double tempBox;
 	
 	public Character() {
-		this.xCoord = 100;
-		this.yCoord = 100;
+		this.xCoord = 200;
+		this.yCoord = 300;
 		this.xVelocity = 0;
 		this.yVelocity = 0;
 		this.tempBox = new Rectangle2D.Double(this.xCoord, this.yCoord, 50, 50);

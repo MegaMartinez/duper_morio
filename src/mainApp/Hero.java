@@ -15,7 +15,6 @@ public class Hero extends Character {
 //	private Rectangle2D.Double tempBox;
 	
 	public void changeSpeed(char direction) {
-		System.out.println("Hero.move was called.");
 		if(direction == 'R') {
 			this.xVelocity = HORI_SPEED;
 			return;
