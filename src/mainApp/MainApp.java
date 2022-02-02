@@ -14,7 +14,7 @@ import javax.swing.Timer;
  */
 public class MainApp {
 	
-	public static final int TICK_DELAY = 250;
+	public static final int TICK_DELAY = 200;
 	
 	
 	private void runApp() {
