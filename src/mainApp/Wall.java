@@ -7,7 +7,9 @@ public class Wall {
 	private final double LENGTH = 100;
 	private final double WIDTH = 50;
 	
-	
+	public Wall() {
+		
+	}
 	
 	
 }
