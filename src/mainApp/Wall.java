@@ -14,7 +14,7 @@ public class Wall {
 	public Wall(int x, int y) {
 		this.xPos = x;
 		this.yPos = y;
-		this.rect = new Rectangle2D.Double(xPos, yPos, this.LENGTH, this.WIDTH);
+		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, this.LENGTH, this.WIDTH);
 	}
 	
 	private boolean collides(Rectangle2D hero) {
