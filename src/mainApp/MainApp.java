@@ -16,7 +16,7 @@ import javax.swing.Timer;
  */
 public class MainApp {
 	
-	public static final int TICK_DELAY = 40;
+	public static final int TICK_DELAY = 150;
 	
 	
 	private void runApp() {
@@ -26,9 +26,10 @@ public class MainApp {
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
 		frame.setSize(500, 500);
 		
-		GameComponent gameComponent = new GameComponent();
+		GameComponent component = new GameComponent();
+		frame.add(component, BorderLayout.CENTER);
 		
-		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(gameComponent);
+		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component);
 
 		Timer timer = new Timer(TICK_DELAY, tickAdvanceListener);
 		timer.start();
