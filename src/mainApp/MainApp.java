@@ -1,9 +1,7 @@
 package mainApp;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -16,7 +14,7 @@ import javax.swing.Timer;
  */
 public class MainApp {
 	
-	public static final int TICK_DELAY = 150;
+	public static final int TICK_DELAY = 250;
 	
 	
 	private void runApp() {
@@ -30,9 +28,11 @@ public class MainApp {
 		frame.add(component, BorderLayout.CENTER);
 		
 		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component);
-
 		Timer timer = new Timer(TICK_DELAY, tickAdvanceListener);
 		timer.start();
+		
+		KeyboardListener leftListener = new KeyboardListener(component, 'L');
+		frame.addKeyListener(leftListener);
 		
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
