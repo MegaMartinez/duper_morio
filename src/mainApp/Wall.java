@@ -7,7 +7,7 @@ public class Wall {
 
 	private double xPos;
 	private double yPos;
-	private final double LENGTH = 100;
+	private final double LENGTH = 50;
 	private final double WIDTH = 50;
 	private Rectangle2D.Double rect;
 	
