@@ -15,10 +15,12 @@ public class GameComponent extends JComponent {
 	
 	private Hero hero;
 	private ArrayList<Wall> walls;
+	private ArrayList<Bomb> bombs;
 	
 	public GameComponent() {
 		this.hero = new Hero();
 		this.walls = new ArrayList<Wall>();
+		this.bombs = new ArrayList<Bomb>();
 	}
 	
 	public void updateState() {
@@ -41,6 +43,10 @@ public class GameComponent extends JComponent {
 		for(Wall wall : this.walls) {
 			wall.drawOn(g2);
 		}
+		g2.setColor(Color.YELLOW);
+		for(Bomb bomb : this.bombs) {
+			bomb.drawOn(g2);
+		}
 
 	}
 	
@@ -48,6 +54,7 @@ public class GameComponent extends JComponent {
 		FileReader file = new FileReader("Level" + level);
 		Scanner scanner = new Scanner(file);
 		this.walls.clear();
+		this.bombs.clear();
 		int xStart = 0;
 		int yStart = 0;
 		
@@ -57,6 +64,9 @@ public class GameComponent extends JComponent {
 				if(Integer.parseInt(ID.trim()) == 1) {
 					Wall newWall = new Wall(xStart, yStart);
 					this.walls.add(newWall);
+				} else if(Integer.parseInt(ID.trim()) == 2) {
+					Bomb newBomb = new Bomb(xStart, yStart);
+					this.bombs.add(newBomb);
 				} xStart += 50;
 			}
 			xStart = 0;

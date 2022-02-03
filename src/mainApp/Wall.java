@@ -5,11 +5,11 @@ import java.awt.geom.Rectangle2D;
 
 public class Wall {
 
-	private double xPos;
-	private double yPos;
+	protected double xPos;
+	protected double yPos;
 	private final double LENGTH = 50;
 	private final double WIDTH = 50;
-	private Rectangle2D.Double rect;
+	protected Rectangle2D.Double rect;
 	
 	public Wall(int x, int y) {
 		this.xPos = x;

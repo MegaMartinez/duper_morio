@@ -14,7 +14,7 @@ import javax.swing.Timer;
  */
 public class MainApp {
 	
-	public static final int TICK_DELAY = 300;
+	public static final int TICK_DELAY = 75;
 	
 	
 	private void runApp() {
@@ -31,7 +31,7 @@ public class MainApp {
 		Timer timer = new Timer(TICK_DELAY, tickAdvanceListener);
 		timer.start();
 		
-		KeyboardListener leftListener = new KeyboardListener(component, 'L');
+		KeyboardListener leftListener = new KeyboardListener(component);
 		frame.addKeyListener(leftListener);
 		
 		frame.setVisible(true);

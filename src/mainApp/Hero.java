@@ -18,16 +18,16 @@ public class Hero extends Character {
 		if(direction == 'R') {
 			this.xVelocity = HORI_SPEED;
 			return;
-		} if(direction == 'L') {
+		} else if(direction == 'L') {
 			this.xVelocity = -HORI_SPEED;
 			return;
-		} if(direction == '-') {
+		} else if(direction == '-') {
 			this.xVelocity = 0;
 			return;
-		} if(direction == 'U') {
+		} else if(direction == 'U') {
 			this.yVelocity = -VERT_SPEED;
 			return;
-		} if(direction == 'D') {
+		} else if(direction == 'D') {
 			this.yVelocity = 0;
 			return;
 		} 
