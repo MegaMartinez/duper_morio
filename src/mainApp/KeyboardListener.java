@@ -11,7 +11,7 @@ public class KeyboardListener implements KeyListener {
 	
 	public KeyboardListener(GameComponent component) {
 		this.component = component;
-		this.levelNum = 0;
+		this.levelNum = 1;
 		
 	}
 	
@@ -68,29 +68,15 @@ public class KeyboardListener implements KeyListener {
 			this.component.moveHero('D');
 			break;
 		case KeyEvent.VK_U:
-			System.out.println("U key is running.");
 			if(this.levelNum < 2) {
 				levelNum += 1;
-				System.out.println("Level number got increased to " + this.levelNum);
-			}
-			try {
-			this.component.loadLevel(this.levelNum);
-			} catch (FileNotFoundException error) {
-				System.out.println("Level filename got borked.");
-				System.exit(1);
-			} break;
+			} this.component.loadLevel(this.levelNum);
+			break;
 		case KeyEvent.VK_D:
-			System.out.println("D key is running.");
 			if(this.levelNum > 1) {
 				levelNum -= 1;
-				System.out.println("Level number got decreased to " + this.levelNum);
-			}
-			try {
-			this.component.loadLevel(this.levelNum);
-			} catch (FileNotFoundException error) {
-				System.out.println("Level filename got borked.");
-				System.exit(1);
-			} break;
+			} this.component.loadLevel(this.levelNum);
+			break;
 		}
 	}
 

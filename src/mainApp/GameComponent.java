@@ -50,8 +50,14 @@ public class GameComponent extends JComponent {
 
 	}
 	
-	public void loadLevel(int level) throws FileNotFoundException {
-		FileReader file = new FileReader("Level" + level);
+	public void loadLevel(int level) {
+		FileReader file = null;
+		try {
+		file = new FileReader("Level" + level);
+		} catch (FileNotFoundException e) {
+			System.out.println("Level filename does not exist.");
+			System.exit(1);
+		}
 		Scanner scanner = new Scanner(file);
 		this.walls.clear();
 		this.bombs.clear();

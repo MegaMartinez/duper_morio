@@ -34,6 +34,9 @@ public class MainApp {
 		KeyboardListener leftListener = new KeyboardListener(component);
 		frame.addKeyListener(leftListener);
 		
+		
+		component.loadLevel(1);
+		
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
