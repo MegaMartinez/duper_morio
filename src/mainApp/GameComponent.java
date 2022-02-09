@@ -26,9 +26,7 @@ public class GameComponent extends JComponent {
 	
 	public void updateState() {
 		this.hero.update();
-		for (Wall wall : walls) {
-			this.hero.platformCollide(wall);
-		}
+		this.checkCollisions();
 	}
 	
 	public void drawScreen() {
@@ -51,7 +49,12 @@ public class GameComponent extends JComponent {
 		for(Bomb bomb : this.bombs) {
 			bomb.drawOn(g2);
 		}
-
+	}
+	
+	public void checkCollisions() {
+		for (Wall wall : walls) {
+			this.hero.platformCollide(wall);
+		}
 	}
 	
 	public void loadLevel(int level) {

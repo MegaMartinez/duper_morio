@@ -53,7 +53,7 @@ public class Hero extends Character {
 	public void update() {
 		super.update();
 		if (!this.touchingPlatform) {
-			this.yVelocity = 5;
+			this.yVelocity += 1;
 		}
 	}
 	
