@@ -6,6 +6,7 @@ public class Hero extends Character {
 	
 	private final int HORI_SPEED = 10;
 	private final int VERT_SPEED = 15;
+
 	
 //	private int xCoord;
 //	private int yCoord;
