@@ -10,8 +10,8 @@ public abstract class Character {
 
 	protected int xCoord;
 	protected int yCoord;
-	protected double xVelocity;
-	protected double yVelocity;
+	protected int xVelocity;
+	protected int yVelocity;
 	protected String image = "Unimplemented";
 	protected Rectangle2D.Double rect;
 	protected boolean isFalling;
@@ -23,6 +23,14 @@ public abstract class Character {
 		this.xVelocity = 0;
 		this.yVelocity = 0;
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, 50, 50);
+	}
+	
+	public Character(int x, int y, int width, int height) {
+		this.xCoord = x;
+		this.yCoord = y;
+		this.xVelocity = 0;
+		this.yVelocity = 0;
+		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, width, height);
 	}
 	
 	public void update() {

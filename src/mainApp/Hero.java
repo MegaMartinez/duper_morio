@@ -10,15 +10,10 @@ public class Hero extends Character {
 	private final int HERO_WIDTH = 50;
 	private final int HERO_HEIGHT = 50;
 	
-	
-	
-
-	
 	public Hero() {
 		
 		super();
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, HERO_WIDTH, HERO_HEIGHT);
-		this.isFalling = true;
 	}
 	
 	public void changeSpeed(char direction) {
@@ -55,7 +50,4 @@ public class Hero extends Character {
 	}
 	
 	
-	
-	
-
 }

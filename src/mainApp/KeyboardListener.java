@@ -39,20 +39,17 @@ public class KeyboardListener implements KeyListener {
 		int keyCode = e.getKeyCode();
 		switch(keyCode) {
 		case KeyEvent.VK_LEFT:
-//			System.out.println("Left key pressed.");
 			this.component.moveHero('L');
 			break;
 		case KeyEvent.VK_RIGHT:
-//			System.out.println("Right key pressed.");
 			this.component.moveHero('R');
 			break;
 		case KeyEvent.VK_UP:
-//			System.out.println("Up key pressed.");
 			this.component.moveHero('U');
 			break;
-		case KeyEvent.VK_DOWN:
-			this.component.moveHero('D');
-			break;
+//		case KeyEvent.VK_DOWN:
+//			this.component.moveHero('D');
+//			break;
 		}
 	}
 
@@ -73,7 +70,7 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_DOWN:
 			this.component.moveHero('|');
 			break;
-			
+
 		case KeyEvent.VK_U:
 			if(this.levelNum < 2) {
 				levelNum += 1;
