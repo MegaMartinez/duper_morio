@@ -50,9 +50,9 @@ public class KeyboardListener implements KeyListener {
 //			System.out.println("Up key pressed.");
 			this.component.moveHero('U');
 			break;
-		case KeyEvent.VK_DOWN:
-			this.component.moveHero('D');
-			break;
+//		case KeyEvent.VK_DOWN:
+//			this.component.moveHero('D');
+//			break;
 		}
 	}
 
@@ -70,9 +70,9 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_UP:
 			this.component.moveHero('|');
 			break;
-		case KeyEvent.VK_DOWN:
-			this.component.moveHero('|');
-			break;
+//		case KeyEvent.VK_DOWN:
+//			this.component.moveHero('|');
+//			break;
 		case KeyEvent.VK_U:
 			if(this.levelNum < 2) {
 				levelNum += 1;
