@@ -9,12 +9,15 @@ public class Hero extends Character {
 
 	private final int HERO_WIDTH = 50;
 	private final int HERO_HEIGHT = 50;
+	
+	private boolean touchingPlatform;
 
 	
 	public Hero() {
 		
 		super();
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, HERO_WIDTH, HERO_HEIGHT);
+		this.touchingPlatform = false;
 	}
 	
 	public void changeSpeed(char direction) {
@@ -42,5 +45,15 @@ public class Hero extends Character {
 			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
 		}
 	}
+	
+	@Override
+	public void update() {
+		super.update();
+		if (!this.touchingPlatform) {
+			this.yVelocity = 5;
+		}
+	}
+	
+	
 
 }
