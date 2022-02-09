@@ -8,8 +8,8 @@ public abstract class Character {
 
 	protected int xCoord;
 	protected int yCoord;
-	protected int xVelocity;
-	protected int yVelocity;
+	protected double xVelocity;
+	protected double yVelocity;
 	protected String image = "Unimplemented";
 	protected Rectangle2D.Double rect;
 	
