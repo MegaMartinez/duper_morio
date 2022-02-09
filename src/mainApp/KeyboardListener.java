@@ -49,7 +49,6 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_UP:
 //			System.out.println("Up key pressed.");
 			this.component.moveHero('U');
-			this.component.
 			break;
 		case KeyEvent.VK_DOWN:
 			this.component.moveHero('D');

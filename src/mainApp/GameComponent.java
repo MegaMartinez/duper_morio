@@ -54,6 +54,7 @@ public class GameComponent extends JComponent {
 
 	}
 	
+	
 	public void loadLevel(int level) {
 		FileReader file = null;
 		try {
