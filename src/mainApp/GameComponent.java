@@ -26,6 +26,9 @@ public class GameComponent extends JComponent {
 	
 	public void updateState() {
 		this.hero.update();
+		for (Wall wall : walls) {
+			this.hero.platformCollide(wall);
+		}
 	}
 	
 	public void drawScreen() {
