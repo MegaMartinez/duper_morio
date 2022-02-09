@@ -1,5 +1,6 @@
 package mainApp;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
@@ -22,6 +23,7 @@ public class Wall {
 	}
 	
 	public void drawOn(Graphics2D g2) {
+		g2.setColor(Color.RED);
 		g2.fill(rect);
 	}
 	

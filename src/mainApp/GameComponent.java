@@ -17,17 +17,21 @@ public class GameComponent extends JComponent {
 	private Hero hero;
 	private ArrayList<Wall> walls;
 	private ArrayList<Bomb> bombs;
+	private ArrayList<Enemy> enemies;
 	
 	public GameComponent() {
 		this.hero = new Hero();
 		this.walls = new ArrayList<Wall>();
 		this.bombs = new ArrayList<Bomb>();
+		this.enemies = new ArrayList<Enemy>();
 	}
 	
 	public void updateState() {
-		this.checkCollisions();
 		this.hero.update();
-		
+		for(Enemy enemy : this.enemies) {
+			enemy.update();
+		}
+		this.checkCollisions();
 	}
 	
 	public void drawScreen() {
@@ -42,19 +46,27 @@ public class GameComponent extends JComponent {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		this.hero.drawOn(g2);
-		g2.setColor(Color.RED);
+//		g2.setColor(Color.RED);
 		for(Wall wall : this.walls) {
 			wall.drawOn(g2);
 		}
-		g2.setColor(Color.YELLOW);
+//		g2.setColor(Color.YELLOW);
 		for(Bomb bomb : this.bombs) {
 			bomb.drawOn(g2);
+		}
+		for(Enemy enemy : this.enemies) {
+//			g2.setColor(enemy.getColor());
+			enemy.drawOn(g2);
 		}
 	}
 	
 	public void checkCollisions() {
 		for (Wall wall : walls) {
 			this.hero.platformCollide(wall);
+		
+			for(Enemy enemy : this.enemies) {
+				enemy.platformCollide(wall);
+			}
 		}
 	}
 	
@@ -70,18 +82,25 @@ public class GameComponent extends JComponent {
 		Scanner scanner = new Scanner(file);
 		this.walls.clear();
 		this.bombs.clear();
+		this.enemies.clear();
 		int xStart = 0;
 		int yStart = 0;
 		
 		while(scanner.hasNext()) {
-			String[] lineOfIDs = scanner.nextLine().split(",");
+			String[] lineOfIDs = scanner.nextLine().trim().split(",");
 			for(String ID : lineOfIDs) {
-				if(Integer.parseInt(ID.trim()) == 1) {
+				if(Integer.parseInt(ID) == 1) {
 					Wall newWall = new Wall(xStart, yStart);
 					this.walls.add(newWall);
-				} else if(Integer.parseInt(ID.trim()) == 2) {
+				} else if(Integer.parseInt(ID) == 2) {
 					Bomb newBomb = new Bomb(xStart, yStart);
 					this.bombs.add(newBomb);
+				} else if(Integer.parseInt(ID) == 3) {
+					Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
+					this.enemies.add(newEnemy);
+				} else if(Integer.parseInt(ID) == 4) {
+					Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
+					this.enemies.add(newEnemy);
 				} xStart += 50;
 			}
 			xStart = 0;

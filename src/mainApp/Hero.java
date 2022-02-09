@@ -1,5 +1,7 @@
 package mainApp;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 public class Hero extends Character {
@@ -38,15 +40,21 @@ public class Hero extends Character {
 		} 
 	}
 	
-	public void platformCollide(Wall wall) {
-		if(this.rect.intersects(wall.rect)) {
-			this.yVelocity = 0;
-			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
-			this.isFalling = false;
-		}
-		else {
-			this.isFalling = true;
-		}
+	@Override
+	public void drawOn(Graphics2D g2) {
+		g2.setColor(Color.black);
+		g2.fill(rect);
 	}
+	
+//	public void platformCollide(Wall wall) {
+//		if(this.rect.intersects(wall.rect)) {
+//			this.yVelocity = 0;
+//			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
+//			this.isFalling = false;
+//		}
+//		else {
+//			this.isFalling = true;
+//		}
+//	}
 
 }

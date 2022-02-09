@@ -45,9 +45,17 @@ public abstract class Character {
 	}
 	
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(Color.black);
 		g2.fill(rect);
 	}
 	
-	public abstract void platformCollide(Wall wall);
+	public void platformCollide(Wall wall) {
+		if(this.rect.intersects(wall.rect)) {
+			this.yVelocity = 0;
+			this.yCoord = (int) wall.yPos - this.rect.height;
+			this.isFalling = false;
+		}
+		else {
+			this.isFalling = true;
+		}
+	}
 }
