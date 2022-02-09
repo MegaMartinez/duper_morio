@@ -6,13 +6,13 @@ public class Hero extends Character {
 	
 	private final int HORI_SPEED = 10;
 	private final int VERT_SPEED = 15;
+	private final int HERO_WIDTH = 50;
+	private final int HERO_HEIGHT = 50;
 	
-//	private int xCoord;
-//	private int yCoord;
-//	private int xVelocity = 0;
-//	private int yVelocity = 0;
-//	private String image = "Unimplemented";
-//	private Rectangle2D.Double tempBox;
+	public Hero() {
+		super();
+		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, HERO_WIDTH, HERO_HEIGHT);
+	}
 	
 	public void changeSpeed(char direction) {
 		if(direction == 'R') {
@@ -31,6 +31,13 @@ public class Hero extends Character {
 			this.yVelocity = 0;
 			return;
 		} 
+	}
+	
+	public void platformCollide(Wall wall) {
+		if(this.rect.intersects(wall.rect) && (this.yCoord + 50) <= wall.yPos) {
+			this.yVelocity = 0;
+			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
+		}
 	}
 
 }
