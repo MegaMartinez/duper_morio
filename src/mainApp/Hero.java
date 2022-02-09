@@ -14,6 +14,7 @@ public class Hero extends Character {
 		
 		super();
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, HERO_WIDTH, HERO_HEIGHT);
+		this.isFalling = true;
 	}
 	
 	public void changeSpeed(char direction) {
@@ -48,6 +49,5 @@ public class Hero extends Character {
 			this.isFalling = true;
 		}
 	}
-	
 	
 }
