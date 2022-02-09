@@ -21,6 +21,14 @@ public abstract class Character {
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, 50, 50);
 	}
 	
+	public Character(int x, int y, int width, int height) {
+		this.xCoord = x;
+		this.yCoord = y;
+		this.xVelocity = 0;
+		this.yVelocity = 0;
+		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, width, height);
+	}
+	
 	public void update() {
 		this.xCoord += this.xVelocity;
 		this.yCoord += this.yVelocity;

@@ -10,14 +10,14 @@ public class Hero extends Character {
 	private final int HERO_WIDTH = 50;
 	private final int HERO_HEIGHT = 50;
 	
-	private boolean touchingPlatform;
+	private boolean isFalling;
 
 	
 	public Hero() {
 		
 		super();
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, HERO_WIDTH, HERO_HEIGHT);
-		this.touchingPlatform = false;
+		this.isFalling = true;
 	}
 	
 	public void changeSpeed(char direction) {
@@ -46,17 +46,18 @@ public class Hero extends Character {
 		if(this.rect.intersects(wall.rect)) {
 			this.yVelocity = 0;
 			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
+			this.isFalling = false;
+		}
+		else {
+			this.isFalling = true;
 		}
 	}
 	
 	@Override
 	public void update() {
 		super.update();
-		if (!this.touchingPlatform) {
-			this.yVelocity += 1;
+		if (this.isFalling) {
+			this.yVelocity += 0.7;
 		}
 	}
-	
-	
-
 }
