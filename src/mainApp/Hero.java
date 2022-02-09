@@ -10,7 +10,8 @@ public class Hero extends Character {
 	private final int HERO_WIDTH = 50;
 	private final int HERO_HEIGHT = 50;
 	
-	private boolean isFalling;
+	
+	
 
 	
 	public Hero() {

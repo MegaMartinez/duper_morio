@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 public abstract class Character {
+	
+	private final double Y_ACCELERATION = 0.7;
 
 	protected int xCoord;
 	protected int yCoord;
@@ -12,8 +14,10 @@ public abstract class Character {
 	protected int yVelocity;
 	protected String image = "Unimplemented";
 	protected Rectangle2D.Double rect;
+	protected boolean isFalling;
 	
 	public Character() {
+		this.isFalling = true;
 		this.xCoord = 200;
 		this.yCoord = 300;
 		this.xVelocity = 0;
@@ -34,6 +38,9 @@ public abstract class Character {
 		this.yCoord += this.yVelocity;
 		this.rect.x += this.xVelocity;
 		this.rect.y += this.yVelocity;
+		if (this.isFalling) {
+			this.yVelocity += this.Y_ACCELERATION;
+		}
 	}
 	
 	public void drawOn(Graphics2D g2) {
