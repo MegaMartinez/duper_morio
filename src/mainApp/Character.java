@@ -25,7 +25,7 @@ public abstract class Character {
 		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, 50, 50);
 	}
 	
-	public Character(int x, int y, int width, int height) {
+	public Character(double x, double y, double width, double height) {
 		this.isFalling = true;
 		this.xCoord = x;
 		this.yCoord = y;
