@@ -28,6 +28,9 @@ public class Hero extends Character {
 			this.yVelocity = -VERT_SPEED;
 			return;
 		} else if(direction == 'D') {
+			this.yVelocity = -VERT_SPEED;
+			return;
+		} else if(direction == '|') {
 			this.yVelocity = 0;
 			return;
 		} 
