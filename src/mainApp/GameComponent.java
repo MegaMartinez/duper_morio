@@ -25,8 +25,9 @@ public class GameComponent extends JComponent {
 	}
 	
 	public void updateState() {
-		this.hero.update();
 		this.checkCollisions();
+		this.hero.update();
+		
 	}
 	
 	public void drawScreen() {

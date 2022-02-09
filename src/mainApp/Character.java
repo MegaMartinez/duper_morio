@@ -8,10 +8,10 @@ public abstract class Character {
 	
 	private final double Y_ACCELERATION = 0.7;
 
-	protected int xCoord;
-	protected int yCoord;
-	protected int xVelocity;
-	protected int yVelocity;
+	protected double xCoord;
+	protected double yCoord;
+	protected double xVelocity;
+	protected double yVelocity;
 	protected String image = "Unimplemented";
 	protected Rectangle2D.Double rect;
 	protected boolean isFalling;
@@ -26,6 +26,7 @@ public abstract class Character {
 	}
 	
 	public Character(int x, int y, int width, int height) {
+		this.isFalling = true;
 		this.xCoord = x;
 		this.yCoord = y;
 		this.xVelocity = 0;
@@ -38,7 +39,7 @@ public abstract class Character {
 		this.yCoord += this.yVelocity;
 		this.rect.x += this.xVelocity;
 		this.rect.y += this.yVelocity;
-		if (this.isFalling) {
+		if(this.isFalling) {
 			this.yVelocity += this.Y_ACCELERATION;
 		}
 	}
