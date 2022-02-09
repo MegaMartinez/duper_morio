@@ -43,7 +43,7 @@ public class Hero extends Character {
 	}
 	
 	public void platformCollide(Wall wall) {
-		if(this.rect.intersects(wall.rect) && (this.yCoord + 50) <= wall.yPos) {
+		if(this.rect.intersects(wall.rect)) {
 			this.yVelocity = 0;
 			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
 		}
