@@ -73,6 +73,7 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_DOWN:
 			this.component.moveHero('|');
 			break;
+			
 		case KeyEvent.VK_U:
 			if(this.levelNum < 2) {
 				levelNum += 1;
