@@ -8,6 +8,7 @@ public class Enemy extends Character {
 	
 	public Enemy(double x, double y) {
 		super(x, y, ENEMY_WIDTH, ENEMY_HEIGHT);
+		this.xVelocity = HORI_SPEED;
 	}
 	
 	public void platformCollide(Wall wall) {
