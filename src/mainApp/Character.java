@@ -31,7 +31,7 @@ public abstract class Character {
 		this.yPos = y;
 		this.xVelocity = 0;
 		this.yVelocity = 0;
-		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, width, height);
+		this.rect = new Rectangle2D.Double(x, y, width, height);
 	}
 	
 	public void update() {
@@ -50,9 +50,17 @@ public abstract class Character {
 	
 	public void platformCollide(Wall wall) {
 		if(this.rect.intersects(wall.rect)) {
-			this.yVelocity = 0;
-			this.yPos = (int) wall.yPos - this.rect.height;
-			this.isFalling = false;
+			if(this.rect.y <= wall.yPos) {
+				this.yVelocity = 0;
+//				this.yPos = wall.yPos - this.rect.height;
+				this.rect.y = wall.yPos - this.rect.height;
+				this.isFalling = false;
+			} else if(this.rect.y >= wall.yPos) {
+				this.yVelocity = 0;
+				this.rect.y = wall.yPos + wall.rect.height;
+				this.isFalling = true;
+			}
+			
 		}
 		else {
 			this.isFalling = true;
