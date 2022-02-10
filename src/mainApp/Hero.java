@@ -12,12 +12,16 @@ public class Hero extends Character {
 	private static final double HERO_WIDTH = 50;
 	private static final double HERO_HEIGHT = 50;
 	
+	private double startingX;
+	private double startingY;
 	
 	
 	private int lives;
 	
 	public Hero() {
 		super(300, 300, HERO_WIDTH, HERO_HEIGHT);
+		this.startingX = 300;
+		this.startingY = 300;
 		this.setLives(3);
 //		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, HERO_WIDTH, HERO_HEIGHT);
 	}
@@ -59,7 +63,9 @@ public class Hero extends Character {
 	}
 
 	public void respawn() {
-		System.out.println("respawning, lives: " + lives);
+		this.xPos = this.startingX;
+		this.yPos = this.startingY;
+		this.yVelocity = 0;
 		
 	}
 	
