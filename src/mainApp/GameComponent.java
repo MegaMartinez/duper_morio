@@ -48,6 +48,10 @@ public class GameComponent extends JComponent {
 		this.repaint();
 	}
 	
+	public int getLives() {
+		return this.hero.getLives();
+	}
+	
 	public void moveHero(char direction) {
 		this.hero.changeSpeed(direction);
 	}
