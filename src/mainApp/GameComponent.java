@@ -37,11 +37,13 @@ public class GameComponent extends JComponent {
 	
 	public void updateState() {
 		this.checkCollisions();
+		if(bombs.size() == 0) {
+			this.changeLevel(true);
+		}
 		this.hero.update();
 		for(Enemy enemy : this.enemies) {
 			enemy.update();
 		}
-//		this.checkCollisions();
 	}
 	
 	public void drawScreen() {
@@ -59,7 +61,6 @@ public class GameComponent extends JComponent {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
-		this.hero.drawOn(g2);
 //		g2.setColor(Color.RED);
 		for(Wall wall : this.walls) {
 			wall.drawOn(g2);
@@ -72,6 +73,7 @@ public class GameComponent extends JComponent {
 //			g2.setColor(enemy.getColor());
 			enemy.drawOn(g2);
 		}
+		this.hero.drawOn(g2);
 	}
 	
 	public void checkCollisions() {
@@ -83,17 +85,16 @@ public class GameComponent extends JComponent {
 			}
 		}
 
-		for(Bomb bomb : bombs) {
-			if(bomb.rect.intersects(hero.rect)) {
-				bombs.remove(bomb);
+		for(int k = 0; k < this.bombs.size(); k++) {
+			if(bombs.get(k).rect.intersects(hero.rect)) {
+				bombs.remove(k);
 			}
 		}
-
+		
 		for (Enemy enemy : enemies) {
 			enemy.collides(hero);
 		}
 	}
-	
 	
 	public void changeLevel(boolean up) {
 		if(up) {
@@ -128,29 +129,62 @@ public class GameComponent extends JComponent {
 		while(scanner.hasNext()) {
 			String[] lineOfIDs = scanner.nextLine().trim().split(",");
 			for(String ID : lineOfIDs) {
-				if(Integer.parseInt(ID) == 1) {
-					if(continuousWall) {
-						this.walls.get(this.walls.size()-1).extend();
-					} else {
-						Wall newWall = new Wall(xStart, yStart);
-						this.walls.add(newWall);
-						continuousWall = true;
-					}
-				} else if(Integer.parseInt(ID) == 2) {
-					Bomb newBomb = new Bomb(xStart, yStart);
-					this.bombs.add(newBomb);
-					continuousWall = false;
-				} else if(Integer.parseInt(ID) == 3) {
-					Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
-					this.enemies.add(newEnemy);
-					continuousWall = false;
-				} else if(Integer.parseInt(ID) == 4) {
-					Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
-					this.enemies.add(newEnemy);
-					continuousWall = false;
-				} else {
-					continuousWall = false;
+				switch(Integer.parseInt(ID)){
+					default:
+						continuousWall = false;
+						break;
+					case 1:
+						if(continuousWall) {
+							this.walls.get(this.walls.size()-1).extend();
+						} else {
+							Wall newWall = new Wall(xStart, yStart);
+							this.walls.add(newWall);
+							continuousWall = true;
+						}
+						break;
+					case 2:
+						Bomb newBomb = new Bomb(xStart, yStart);
+						this.bombs.add(newBomb);
+						continuousWall = false;
+						break;
+					case 3:
+						{
+						Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
+						this.enemies.add(newEnemy);
+						continuousWall = false;
+						}
+						break;
+					case 4:
+						{
+						Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
+						this.enemies.add(newEnemy);
+						continuousWall = false;
+						}
+						break;
 				} xStart += 50;
+				// if(Integer.parseInt(ID) == 1) {
+				// 	if(continuousWall) {
+				// 		this.walls.get(this.walls.size()-1).extend();
+				// 	} else {
+				// 		Wall newWall = new Wall(xStart, yStart);
+				// 		this.walls.add(newWall);
+				// 		continuousWall = true;
+				// 	}
+				// } else if(Integer.parseInt(ID) == 2) {
+				// 	Bomb newBomb = new Bomb(xStart, yStart);
+				// 	this.bombs.add(newBomb);
+				// 	continuousWall = false;
+				// } else if(Integer.parseInt(ID) == 3) {
+				// 	Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
+				// 	this.enemies.add(newEnemy);
+				// 	continuousWall = false;
+				// } else if(Integer.parseInt(ID) == 4) {
+				// 	Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
+				// 	this.enemies.add(newEnemy);
+				// 	continuousWall = false;
+				// } else {
+				// 	continuousWall = false;
+				// } xStart += 50;
 			}
 			xStart = 50;
 			yStart += 50;

@@ -22,7 +22,7 @@ public class Hero extends Character {
 		super(300, 300, HERO_WIDTH, HERO_HEIGHT);
 		this.startingX = 300;
 		this.startingY = 300;
-		this.setLives(3);
+		this.lives = 3;
 //		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, HERO_WIDTH, HERO_HEIGHT);
 	}
 	
@@ -66,7 +66,6 @@ public class Hero extends Character {
 		this.xPos = this.startingX;
 		this.yPos = this.startingY;
 		this.yVelocity = 0;
-		
 	}
 	
 	
