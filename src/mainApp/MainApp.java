@@ -25,17 +25,15 @@ public class MainApp {
 		frame.setSize(750, 750);
 		
 		GameComponent component = new GameComponent();
+		component.loadLevel();
 		frame.add(component, BorderLayout.CENTER);
 		
 		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component);
 		Timer timer = new Timer(TICK_DELAY, tickAdvanceListener);
 		timer.start();
 		
-		KeyboardListener leftListener = new KeyboardListener(component);
-		frame.addKeyListener(leftListener);
-		
-		
-		component.loadLevel(1);
+		KeyboardListener keyboardListener = new KeyboardListener(component);
+		frame.addKeyListener(keyboardListener);
 		
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -20,6 +20,7 @@ public class GameComponent extends JComponent {
 	private ArrayList<Wall> walls;
 	private ArrayList<Bomb> bombs;
 	private ArrayList<Enemy> enemies;
+	private int levelNum = 1;
 	
 	public GameComponent() {
 		this.hero = new Hero();
@@ -78,11 +79,21 @@ public class GameComponent extends JComponent {
 		}
 	}
 	
-	public void loadLevel(int level) {
+	public void changeLevel(boolean up) {
+		if(up) {
+			levelNum += 1;
+			this.loadLevel();
+		} else {
+			levelNum -= 1;
+			this.loadLevel();
+		}
+	}
+	
+	public void loadLevel() {
 		FileReader file = null;
 		try {
 //		file = new FileReader("Level" + level);
-		file = new FileReader(this.levels.get(level-1));
+		file = new FileReader(this.levels.get(this.levelNum-1));
 		} catch (FileNotFoundException e) {
 			System.out.println("Level filename does not exist.");
 			System.exit(1);
