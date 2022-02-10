@@ -55,7 +55,6 @@ public class KeyboardListener implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-//		System.out.println("Key released.");
 		int keyCode = e.getKeyCode();
 		switch(keyCode) {
 		case KeyEvent.VK_LEFT:
@@ -67,9 +66,9 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_UP:
 			this.component.moveHero('|');
 			break;
-		case KeyEvent.VK_DOWN:
-			this.component.moveHero('|');
-			break;
+//		case KeyEvent.VK_DOWN:
+//			this.component.moveHero('|');
+//			break;
 
 		case KeyEvent.VK_U:
 			if(this.levelNum < 2) {

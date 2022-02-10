@@ -8,8 +8,8 @@ public abstract class Character {
 	
 	private final double Y_ACCELERATION = 0.7;
 
-	protected double xCoord;
-	protected double yCoord;
+	protected double xPos;
+	protected double yPos;
 	protected double xVelocity;
 	protected double yVelocity;
 	protected String image = "Unimplemented";
@@ -18,25 +18,25 @@ public abstract class Character {
 	
 	public Character() {
 		this.isFalling = true;
-		this.xCoord = 200;
-		this.yCoord = 300;
+		this.xPos = 200;
+		this.yPos = 300;
 		this.xVelocity = 0;
 		this.yVelocity = 0;
-		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, 50, 50);
+		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, 50, 50);
 	}
 	
 	public Character(double x, double y, double width, double height) {
 		this.isFalling = true;
-		this.xCoord = x;
-		this.yCoord = y;
+		this.xPos = x;
+		this.yPos = y;
 		this.xVelocity = 0;
 		this.yVelocity = 0;
-		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, width, height);
+		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, width, height);
 	}
 	
 	public void update() {
-		this.xCoord += this.xVelocity;
-		this.yCoord += this.yVelocity;
+		this.xPos += this.xVelocity;
+		this.yPos += this.yVelocity;
 		this.rect.x += this.xVelocity;
 		this.rect.y += this.yVelocity;
 		if(this.isFalling) {
@@ -51,7 +51,7 @@ public abstract class Character {
 	public void platformCollide(Wall wall) {
 		if(this.rect.intersects(wall.rect)) {
 			this.yVelocity = 0;
-			this.yCoord = (int) wall.yPos - this.rect.height;
+			this.yPos = (int) wall.yPos - this.rect.height;
 			this.isFalling = false;
 		}
 		else {

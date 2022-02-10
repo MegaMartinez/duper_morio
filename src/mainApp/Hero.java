@@ -6,16 +6,15 @@ import java.awt.geom.Rectangle2D;
 
 public class Hero extends Character {
 	
-	private final int HORI_SPEED = 10;
-	private final int VERT_SPEED = 15;
+	private static final int HORI_SPEED = 10;
+	private static final int VERT_SPEED = 15;
 
-	private final int HERO_WIDTH = 50;
-	private final int HERO_HEIGHT = 50;
+	private static final double HERO_WIDTH = 50;
+	private static final double HERO_HEIGHT = 50;
 	
 	public Hero() {
-		
-		super();
-		this.rect = new Rectangle2D.Double(this.xCoord, this.yCoord, HERO_WIDTH, HERO_HEIGHT);
+		super(300, 300, HERO_WIDTH, HERO_HEIGHT);
+//		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, HERO_WIDTH, HERO_HEIGHT);
 	}
 	
 	public void changeSpeed(char direction) {
@@ -49,7 +48,7 @@ public class Hero extends Character {
 //	public void platformCollide(Wall wall) {
 //		if(this.rect.intersects(wall.rect)) {
 //			this.yVelocity = 0;
-//			this.yCoord = (int) wall.yPos - HERO_HEIGHT;
+//			this.yPos = (int) wall.yPos - HERO_HEIGHT;
 //			this.isFalling = false;
 //		}
 //		else {

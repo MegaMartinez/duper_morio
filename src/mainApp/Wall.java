@@ -5,11 +5,12 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 public class Wall {
+	
+	private static final double LENGTH = 50;
+	private static final double WIDTH = 50;
 
 	protected double xPos;
 	protected double yPos;
-	private final double LENGTH = 50;
-	private final double WIDTH = 50;
 	protected Rectangle2D.Double rect;
 	
 	public Wall(int x, int y) {
