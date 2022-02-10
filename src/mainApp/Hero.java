@@ -12,8 +12,13 @@ public class Hero extends Character {
 	private static final double HERO_WIDTH = 50;
 	private static final double HERO_HEIGHT = 50;
 	
+	
+	
+	private int lives;
+	
 	public Hero() {
 		super(300, 300, HERO_WIDTH, HERO_HEIGHT);
+		this.setLives(3);
 //		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, HERO_WIDTH, HERO_HEIGHT);
 	}
 	
@@ -44,6 +49,21 @@ public class Hero extends Character {
 		g2.setColor(Color.black);
 		g2.fill(rect);
 	}
+
+	public int getLives() {
+		return lives;
+	}
+
+	public void setLives(int lives) {
+		this.lives = lives;
+	}
+
+	public void respawn() {
+		System.out.println("respawning, lives: " + lives);
+		
+	}
+	
+	
 	
 //	public void platformCollide(Wall wall) {
 //		if(this.rect.intersects(wall.rect)) {

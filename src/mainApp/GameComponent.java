@@ -78,12 +78,18 @@ public class GameComponent extends JComponent {
 				enemy.platformCollide(wall);
 			}
 		}
+
 		for(Bomb bomb : bombs) {
 			if(bomb.rect.intersects(hero.rect)) {
 				bombs.remove(bomb);
 			}
 		}
+
+		for (Enemy enemy : enemies) {
+			enemy.collides(hero);
+		}
 	}
+	
 	
 	public void changeLevel(boolean up) {
 		if(up) {
