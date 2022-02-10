@@ -12,6 +12,8 @@ public class Hero extends Character {
 	private static final double HERO_WIDTH = 50;
 	private static final double HERO_HEIGHT = 50;
 	
+	
+	
 	private int lives;
 	
 	public Hero() {
@@ -55,6 +57,13 @@ public class Hero extends Character {
 	public void setLives(int lives) {
 		this.lives = lives;
 	}
+
+	public void respawn() {
+		System.out.println("respawning, lives: " + lives);
+		
+	}
+	
+	
 	
 //	public void platformCollide(Wall wall) {
 //		if(this.rect.intersects(wall.rect)) {

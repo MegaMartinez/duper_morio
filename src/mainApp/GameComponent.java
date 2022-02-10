@@ -78,6 +78,9 @@ public class GameComponent extends JComponent {
 				enemy.platformCollide(wall);
 			}
 		}
+		for (Enemy enemy : enemies) {
+			enemy.collides(hero);
+		}
 	}
 	
 	public void changeLevel(boolean up) {

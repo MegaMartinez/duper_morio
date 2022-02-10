@@ -37,6 +37,13 @@ public class Enemy extends Character {
 	
 	public Color getColor() {return this.color;}
 	
+	public void collides(Hero hero) {
+		if (this.rect.intersects(hero.rect)) {
+			hero.setLives(hero.getLives() - 1);
+			hero.respawn();
+		}
+	}
+	
 //	public void platformCollide(Wall wall) {
 //		if(this.rect.intersects(wall.rect)) {
 //			this.yVelocity = 0;
