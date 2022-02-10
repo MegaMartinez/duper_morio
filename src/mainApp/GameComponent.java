@@ -37,11 +37,13 @@ public class GameComponent extends JComponent {
 	
 	public void updateState() {
 		this.checkCollisions();
+		if(bombs.size() == 0) {
+			this.changeLevel(true);
+		}
 		this.hero.update();
 		for(Enemy enemy : this.enemies) {
 			enemy.update();
 		}
-//		this.checkCollisions();
 	}
 	
 	public void drawScreen() {
@@ -55,7 +57,6 @@ public class GameComponent extends JComponent {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
-		this.hero.drawOn(g2);
 //		g2.setColor(Color.RED);
 		for(Wall wall : this.walls) {
 			wall.drawOn(g2);
@@ -68,6 +69,7 @@ public class GameComponent extends JComponent {
 //			g2.setColor(enemy.getColor());
 			enemy.drawOn(g2);
 		}
+		this.hero.drawOn(g2);
 	}
 	
 	public void checkCollisions() {
@@ -84,9 +86,6 @@ public class GameComponent extends JComponent {
 				bombs.remove(k);
 			}
 		}
-//		if(bombs.size() == 0) {
-//			this.changeLevel(true);
-//		}
 		
 		for (Enemy enemy : enemies) {
 			enemy.collides(hero);
