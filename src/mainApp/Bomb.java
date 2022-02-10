@@ -21,5 +21,9 @@ public class Bomb extends Wall {
 		g2.setColor(Color.YELLOW);
 		g2.fill(rect);
 	}
+	
+	public boolean checkCollision(Hero hero) {
+		return this.rect.intersects(hero.rect);
+	}
 
 }
