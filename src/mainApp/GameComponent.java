@@ -102,8 +102,11 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
-		this.walls.add(new Wall(true));
-		int xStart = 0;
+		this.walls.add(new Wall(0, 0, 750, 50));
+		this.walls.add(new Wall(0, 700, 750, 50));
+		this.walls.add(new Wall(0, 50, 50, 650));
+		this.walls.add(new Wall(700, 50, 50, 650));
+		int xStart = 50;
 		int yStart = 50;
 		boolean continuousWall = false;
 		
@@ -134,10 +137,10 @@ public class GameComponent extends JComponent {
 					continuousWall = false;
 				} xStart += 50;
 			}
-			xStart = 0;
+			xStart = 50;
 			yStart += 50;
 			continuousWall = false;
-		} this.walls.add(new Wall(false));
+		}
 		
 	}
 
