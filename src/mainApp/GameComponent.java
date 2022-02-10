@@ -79,12 +79,15 @@ public class GameComponent extends JComponent {
 			}
 		}
 
-		for(Bomb bomb : bombs) {
-			if(bomb.rect.intersects(hero.rect)) {
-				bombs.remove(bomb);
+		for(int k = 0; k < this.bombs.size(); k++) {
+			if(bombs.get(k).rect.intersects(hero.rect)) {
+				bombs.remove(k);
 			}
 		}
-
+//		if(bombs.size() == 0) {
+//			this.changeLevel(true);
+//		}
+		
 		for (Enemy enemy : enemies) {
 			enemy.collides(hero);
 		}
