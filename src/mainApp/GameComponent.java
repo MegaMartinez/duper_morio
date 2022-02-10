@@ -36,11 +36,12 @@ public class GameComponent extends JComponent {
 	}
 	
 	public void updateState() {
+		this.checkCollisions();
 		this.hero.update();
 		for(Enemy enemy : this.enemies) {
 			enemy.update();
 		}
-		this.checkCollisions();
+//		this.checkCollisions();
 	}
 	
 	public void drawScreen() {
@@ -92,7 +93,6 @@ public class GameComponent extends JComponent {
 	public void loadLevel() {
 		FileReader file = null;
 		try {
-//		file = new FileReader("Level" + level);
 		file = new FileReader(this.levels.get(this.levelNum-1));
 		} catch (FileNotFoundException e) {
 			System.out.println("Level filename does not exist.");
@@ -102,29 +102,42 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
+		this.walls.add(new Wall(true));
 		int xStart = 0;
-		int yStart = 0;
+		int yStart = 50;
+		boolean continuousWall = false;
 		
 		while(scanner.hasNext()) {
 			String[] lineOfIDs = scanner.nextLine().trim().split(",");
 			for(String ID : lineOfIDs) {
 				if(Integer.parseInt(ID) == 1) {
-					Wall newWall = new Wall(xStart, yStart);
-					this.walls.add(newWall);
+					if(continuousWall) {
+						this.walls.get(this.walls.size()-1).extend();
+					} else {
+						Wall newWall = new Wall(xStart, yStart);
+						this.walls.add(newWall);
+						continuousWall = true;
+					}
 				} else if(Integer.parseInt(ID) == 2) {
 					Bomb newBomb = new Bomb(xStart, yStart);
 					this.bombs.add(newBomb);
+					continuousWall = false;
 				} else if(Integer.parseInt(ID) == 3) {
 					Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
 					this.enemies.add(newEnemy);
+					continuousWall = false;
 				} else if(Integer.parseInt(ID) == 4) {
 					Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
 					this.enemies.add(newEnemy);
+					continuousWall = false;
+				} else {
+					continuousWall = false;
 				} xStart += 50;
 			}
 			xStart = 0;
 			yStart += 50;
-		}
+			continuousWall = false;
+		} this.walls.add(new Wall(false));
 		
 	}
 
