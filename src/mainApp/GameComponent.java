@@ -2,6 +2,7 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -15,15 +16,22 @@ import javax.swing.JComponent;
 public class GameComponent extends JComponent {
 	
 	private Hero hero;
+	private ArrayList<String> levels;
 	private ArrayList<Wall> walls;
 	private ArrayList<Bomb> bombs;
 	private ArrayList<Enemy> enemies;
 	
 	public GameComponent() {
 		this.hero = new Hero();
+		this.levels = new ArrayList<String>();
 		this.walls = new ArrayList<Wall>();
 		this.bombs = new ArrayList<Bomb>();
 		this.enemies = new ArrayList<Enemy>();
+		
+		File dir = new File("Levels");
+		for(File level : dir.listFiles()) {
+			this.levels.add(level.getAbsolutePath());
+		}
 	}
 	
 	public void updateState() {
@@ -70,11 +78,11 @@ public class GameComponent extends JComponent {
 		}
 	}
 	
-	
 	public void loadLevel(int level) {
 		FileReader file = null;
 		try {
-		file = new FileReader("Level" + level);
+//		file = new FileReader("Level" + level);
+		file = new FileReader(this.levels.get(level-1));
 		} catch (FileNotFoundException e) {
 			System.out.println("Level filename does not exist.");
 			System.exit(1);
