@@ -149,8 +149,10 @@ public class GameComponent extends JComponent {
 						break;
 					case 3:
 						{
-						Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
-						this.enemies.add(newEnemy);
+//						Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
+//						this.enemies.add(newEnemy);
+						Jumper newJumper = new Jumper(xStart, yStart);
+						this.enemies.add(newJumper);
 						continuousWall = false;
 						}
 						break;
