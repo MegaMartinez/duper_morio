@@ -66,6 +66,10 @@ public class Hero extends Character {
 		this.xPos = this.startingX;
 		this.yPos = this.startingY;
 		this.yVelocity = 0;
+		this.lives -= 1;
+		if(this.lives < 0) {
+			System.exit(1);
+		}
 	}
 	
 	
