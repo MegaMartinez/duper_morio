@@ -7,8 +7,8 @@ import java.awt.geom.Rectangle2D.Double;
 
 public class Bomb extends Wall {
 	
-	private final double BOMB_WIDTH = 30;
-	private final double BOMB_LENGTH = 30;
+	private final double BOMB_WIDTH = 32;
+	private final double BOMB_LENGTH = 32;
 	
 	public Bomb(int x, int y) {
 		super(x, y);

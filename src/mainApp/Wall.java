@@ -8,8 +8,8 @@ import java.awt.geom.Line2D;
 
 public class Wall {
 	
-	private static final double WALL_LENGTH = 50;
-	private static final double WALL_HEIGHT = 50;
+	private static final double WALL_LENGTH = 64;
+	private static final double WALL_HEIGHT = 64;
 
 	protected double xPos;
 	protected double yPos;
