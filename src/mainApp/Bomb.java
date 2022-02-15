@@ -12,8 +12,8 @@ public class Bomb extends Wall {
 	
 	public Bomb(int x, int y) {
 		super(x, y);
-		this.xPos = x + 10;
-		this.yPos = y + 10;
+		this.xPos = x + 16;
+		this.yPos = y + 16;
 		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, BOMB_WIDTH, BOMB_LENGTH);
 	}
 	
