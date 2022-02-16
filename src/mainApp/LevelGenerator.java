@@ -7,6 +7,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Random;
 
+/**
+ * Class: LevelGenerator
+ * @author Team 405
+ * Purpose: Creates new files and writes game levels to them.
+ */
+
 public class LevelGenerator {
 
     private String levelString = "";

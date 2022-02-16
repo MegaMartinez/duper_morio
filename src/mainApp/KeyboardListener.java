@@ -4,6 +4,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.FileNotFoundException;
 
+/**
+ * Class: KeyboardListener
+ * @author Team 405
+ * Purpose: Checks key inputs for the GameComponent class.
+ */
+
 public class KeyboardListener implements KeyListener {
 
 	private GameComponent component;

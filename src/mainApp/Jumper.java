@@ -3,6 +3,13 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+/**
+ * Class: Jumper
+ * @author Team 405
+ * Purpose: Class for a different type of enemy. Jumper inherits Enemy as a superclass using an overridden 
+ * 			update method to jump at certain time intervals.
+ */
+
 public class Jumper extends Enemy {
 	
 	private static final double JUMP_SPEED = 15;

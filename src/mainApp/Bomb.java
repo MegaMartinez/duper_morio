@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D.Double;
 
 /**
  * Class: Bomb
- * @author team 405
+ * @author Team 405
  * Purpose: Class to hold methods and information for the bomb class. Draws and checks collisions with the hero.
  * 			Extends Wall as a superclass for position and hitbox information
  */

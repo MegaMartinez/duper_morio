@@ -8,7 +8,7 @@ import java.awt.geom.Rectangle2D.Double;
 
 /**
  * Class: Character
- * @author team 405
+ * @author Team 405
  * Purpose: Abstract class that holds necessary information and methods shared by the hero and enemies. Also has the method to check
  * 			collision with the platforms.
  */

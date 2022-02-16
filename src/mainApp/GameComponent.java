@@ -11,7 +11,12 @@ import java.util.Scanner;
 
 import javax.swing.JComponent;
 
-
+/**
+ * Class: GameComponent
+ * @author Team 405
+ * Purpose: Class to run all the game's operations. Handles drawing, movement, and collsions for all objects. Also loads and changes 
+ * 			levels from files.
+ */
 
 public class GameComponent extends JComponent {
 	
