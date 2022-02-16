@@ -118,12 +118,12 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
-		this.walls.add(new Wall(0, 0, 750, 50));
-		this.walls.add(new Wall(0, 700, 750, 50));
-		this.walls.add(new Wall(0, 50, 50, 650));
-		this.walls.add(new Wall(700, 50, 50, 650));
-		int xStart = 50;
-		int yStart = 50;
+		this.walls.add(new Wall(0, 0, 1408, 64));
+		this.walls.add(new Wall(0, 704, 1408, 64));
+		this.walls.add(new Wall(0, 64, 64, 704));
+		this.walls.add(new Wall(1344, 64, 64, 704));
+		int xStart = 64;
+		int yStart = 64;
 		boolean continuousWall = false;
 		
 		while(scanner.hasNext()) {
@@ -163,7 +163,7 @@ public class GameComponent extends JComponent {
 						continuousWall = false;
 						}
 						break;
-				} xStart += 50;
+				} xStart += 64;
 				// if(Integer.parseInt(ID) == 1) {
 				// 	if(continuousWall) {
 				// 		this.walls.get(this.walls.size()-1).extend();
@@ -188,8 +188,8 @@ public class GameComponent extends JComponent {
 				// 	continuousWall = false;
 				// } xStart += 50;
 			}
-			xStart = 50;
-			yStart += 50;
+			xStart = 64;
+			yStart += 64;
 			continuousWall = false;
 		}
 		

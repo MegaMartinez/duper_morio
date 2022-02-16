@@ -24,7 +24,8 @@ public class MainApp {
 //		System.out.println("test");
 		
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
-		frame.setSize(750, 800);
+		frame.setSize(1408, 768);
+		
 		GameComponent component = new GameComponent();
 		
 		JPanel scoreboard = new JPanel();
