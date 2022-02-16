@@ -11,7 +11,7 @@ import javax.swing.Timer;
 /**
  * Class: MainApp
  * @author Team 405
- * <br>Purpose: Top level class for CSSE220 Project containing main method 
+ * <br>Purpose: Top level class for CSSE220 Project containing main method, create frame and components 
  * <br>Restrictions: None
  */
 public class MainApp {

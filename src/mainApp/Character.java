@@ -6,6 +6,13 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
 
+/**
+ * Class: Character
+ * @author team 405
+ * Purpose: Abstract class that holds necessary information and methods shared by the hero and enemies. Also has the method to check
+ * 			collision with the platforms.
+ */
+
 public abstract class Character {
 	
 	private final double Y_ACCELERATION = 0.7;
