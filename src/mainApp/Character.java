@@ -59,6 +59,11 @@ public abstract class Character {
 		g2.fill(rect);
 	}
 	
+	/**
+	 * Method: platformCollide
+	 * @param wall
+	 * Purpose: Handles collisions from all directions between a character and a wall or platform
+	 */
 	public void platformCollide(Wall wall) {
 		
 		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);

@@ -68,7 +68,11 @@ public class Hero extends Character {
 	public void setLives(int lives) {
 		this.lives = lives;
 	}
-
+	
+	/**
+	 * Method: respawn
+	 * Purpose: Resets position, subtracts lives, and checks for the loss condition.
+	 */
 	public void respawn() {
 		this.xPos = this.startingX;
 		this.yPos = this.startingY;
