@@ -13,8 +13,8 @@ import java.awt.geom.Rectangle2D;
 
 public class Hero extends Character {
 	
-	private static final int HORI_SPEED = 10;
-	private static final int VERT_SPEED = 15;
+	private static final int HORI_SPEED = 5;
+	private static final int VERT_SPEED = 8;
 
 	private static final double HERO_WIDTH = 50;
 	private static final double HERO_HEIGHT = 50;
@@ -44,6 +44,9 @@ public class Hero extends Character {
 			this.xVelocity = 0;
 			return;
 		} else if(direction == 'U') {
+//			if(this.isFalling == true) {
+//				return;
+//			}
 			this.yVelocity = -VERT_SPEED;
 			return;
 		} else if(direction == 'D') {
