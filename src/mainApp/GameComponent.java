@@ -120,7 +120,7 @@ public class GameComponent extends JComponent {
 	public void loadLevel() {
 		FileReader file = null;
 		try {
-		file = new FileReader(this.levels.get(this.levelNum-1));
+		file = new FileReader(this.levels.get(this.levelNum - 1));
 		} catch (FileNotFoundException e) {
 			System.out.println("Level filename does not exist.");
 			System.exit(1);
