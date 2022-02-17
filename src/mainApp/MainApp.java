@@ -14,7 +14,7 @@ import javax.swing.Timer;
  */
 public class MainApp {
 	
-	public static final int TICK_DELAY = 40;
+	public static final int TICK_DELAY = 15;
 	
 	
 	private void runApp() {
@@ -22,7 +22,7 @@ public class MainApp {
 //		System.out.println("test");
 		
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
-		frame.setSize(750, 750);
+		frame.setSize(1000, 800);
 		
 		GameComponent component = new GameComponent();
 		component.loadLevel();

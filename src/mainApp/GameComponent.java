@@ -15,6 +15,8 @@ import javax.swing.JComponent;
 
 public class GameComponent extends JComponent {
 	
+	private static final int BLOCK_OFFSET = 64;
+	
 	private Hero hero;
 	private ArrayList<String> levels;
 	private ArrayList<Wall> walls;
@@ -114,12 +116,12 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
-		this.walls.add(new Wall(0, 0, 750, 50));
-		this.walls.add(new Wall(0, 700, 750, 50));
-		this.walls.add(new Wall(0, 50, 50, 650));
-		this.walls.add(new Wall(700, 50, 50, 650));
-		int xStart = 50;
-		int yStart = 50;
+		this.walls.add(new Wall(0, 0, 800, BLOCK_OFFSET));
+		this.walls.add(new Wall(0, 800 - BLOCK_OFFSET, 800, BLOCK_OFFSET));
+		this.walls.add(new Wall(0, BLOCK_OFFSET, BLOCK_OFFSET, 800 - 2*BLOCK_OFFSET));
+		this.walls.add(new Wall(800 - BLOCK_OFFSET, BLOCK_OFFSET, BLOCK_OFFSET, 800 - 2*BLOCK_OFFSET));
+		int xStart = BLOCK_OFFSET;
+		int yStart = BLOCK_OFFSET;
 		boolean continuousWall = false;
 		
 		while(scanner.hasNext()) {
@@ -159,7 +161,7 @@ public class GameComponent extends JComponent {
 						continuousWall = false;
 						}
 						break;
-				} xStart += 50;
+				} xStart += BLOCK_OFFSET;
 				// if(Integer.parseInt(ID) == 1) {
 				// 	if(continuousWall) {
 				// 		this.walls.get(this.walls.size()-1).extend();
@@ -184,8 +186,8 @@ public class GameComponent extends JComponent {
 				// 	continuousWall = false;
 				// } xStart += 50;
 			}
-			xStart = 50;
-			yStart += 50;
+			xStart = BLOCK_OFFSET;
+			yStart += BLOCK_OFFSET;
 			continuousWall = false;
 		}
 		
