@@ -11,9 +11,16 @@ import java.util.Scanner;
 
 import javax.swing.JComponent;
 
-
+/**
+ * Class: GameComponent
+ * @author Team 405
+ * Purpose: Class to run all the game's operations. Handles drawing, movement, and collsions for all objects. Also loads and changes 
+ * 			levels from files.
+ */
 
 public class GameComponent extends JComponent {
+	
+	private static final int BLOCK_OFFSET = 64;
 	
 	private Hero hero;
 	private ArrayList<String> levels;
@@ -48,6 +55,10 @@ public class GameComponent extends JComponent {
 	
 	public void drawScreen() {
 		this.repaint();
+	}
+	
+	public int getLives() {
+		return this.hero.getLives();
 	}
 	
 	public void moveHero(char direction) {
@@ -102,6 +113,10 @@ public class GameComponent extends JComponent {
 		}
 	}
 	
+	/**
+	 * Purpose:Reads files and loads levels from them based on the characters in the file
+	 * Restrictions: Files have to be premade with the correct formatting and number of characters for the method to work properly.
+	 */
 	public void loadLevel() {
 		FileReader file = null;
 		try {
@@ -159,7 +174,9 @@ public class GameComponent extends JComponent {
 						continuousWall = false;
 						}
 						break;
+
 				} xStart += 64;
+				
 				// if(Integer.parseInt(ID) == 1) {
 				// 	if(continuousWall) {
 				// 		this.walls.get(this.walls.size()-1).extend();
@@ -184,8 +201,10 @@ public class GameComponent extends JComponent {
 				// 	continuousWall = false;
 				// } xStart += 50;
 			}
+
 			xStart = 64;
 			yStart += 64;
+
 			continuousWall = false;
 		}
 		

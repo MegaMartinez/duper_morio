@@ -3,9 +3,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Class: Enemy
+ * @author Team 405
+ * Purpose: Class to hold information for the enemies. Determines the color and type of the enemy. Inherits from the Character class,
+ *  		with different movement and collisions with the hero.
+ */
 public class Enemy extends Character {
 	
-	private static final double HORI_SPEED = 5;
+	private static final double HORI_SPEED = 3;
 	private static final double ENEMY_WIDTH = 50;
 	private static final double ENEMY_HEIGHT = 50;
 	private static final Color GRUNT_COLOR = Color.BLUE;

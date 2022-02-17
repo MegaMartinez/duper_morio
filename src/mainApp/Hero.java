@@ -4,10 +4,17 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Class: Enemy
+ * @author Team 405
+ * Purpose: Class to hold information for the Hero. Inherits from the Character class. Also has a variable to track the hero's lives
+ * 			and a method to respawn the hero while it has lives or exit the program if it doesn't. 		
+ */
+
 public class Hero extends Character {
 	
-	private static final int HORI_SPEED = 10;
-	private static final int VERT_SPEED = 15;
+	private static final int HORI_SPEED = 5;
+	private static final int VERT_SPEED = 8;
 
 	private static final double HERO_WIDTH = 50;
 	private static final double HERO_HEIGHT = 50;
@@ -37,6 +44,9 @@ public class Hero extends Character {
 			this.xVelocity = 0;
 			return;
 		} else if(direction == 'U') {
+//			if(this.isFalling == true) {
+//				return;
+//			}
 			this.yVelocity = -VERT_SPEED;
 			return;
 		} else if(direction == 'D') {
@@ -61,7 +71,11 @@ public class Hero extends Character {
 	public void setLives(int lives) {
 		this.lives = lives;
 	}
-
+	
+	/**
+	 * Purpose: Resets position, subtracts lives, and checks for the loss condition.
+	 * Restrictions: none
+	 */
 	public void respawn() {
 		this.xPos = this.startingX;
 		this.yPos = this.startingY;
