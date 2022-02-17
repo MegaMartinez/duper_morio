@@ -28,13 +28,17 @@ public class GameComponent extends JComponent {
 	private ArrayList<Bomb> bombs;
 	private ArrayList<Enemy> enemies;
 	private int levelNum = 1;
+	private int frameWidth;
+	private int frameHeight;
 	
-	public GameComponent() {
+	public GameComponent(int frameWidth, int frameHeight) {
 		this.hero = new Hero();
 		this.levels = new ArrayList<String>();
 		this.walls = new ArrayList<Wall>();
 		this.bombs = new ArrayList<Bomb>();
 		this.enemies = new ArrayList<Enemy>();
+		this.frameWidth = frameWidth;
+		this.frameHeight = frameHeight;
 		
 		File dir = new File("Levels");
 		for(File level : dir.listFiles()) {
@@ -130,10 +134,10 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
-		this.walls.add(new Wall(0, 0, 1408, 64));
-		this.walls.add(new Wall(0, 704, 1408, 64));
-		this.walls.add(new Wall(0, 64, 64, 704));
-		this.walls.add(new Wall(1344, 64, 64, 704));
+		this.walls.add(new Wall(0, 0, this.frameWidth, BLOCK_OFFSET));
+		this.walls.add(new Wall(0, this.frameHeight - BLOCK_OFFSET, this.frameWidth, BLOCK_OFFSET));
+		this.walls.add(new Wall(0, BLOCK_OFFSET, BLOCK_OFFSET, this.frameHeight - BLOCK_OFFSET));
+		this.walls.add(new Wall(this.frameWidth - BLOCK_OFFSET, BLOCK_OFFSET, BLOCK_OFFSET, this.frameHeight - BLOCK_OFFSET));
 		int xStart = 64;
 		int yStart = 64;
 		boolean continuousWall = false;

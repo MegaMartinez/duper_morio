@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
  */
 public class Enemy extends Character {
 	
-	private static final double HORI_SPEED = 3;
+	private static final double HORI_SPEED = 6;
 	private static final double ENEMY_WIDTH = 50;
 	private static final double ENEMY_HEIGHT = 50;
 	private static final Color GRUNT_COLOR = Color.BLUE;
@@ -32,7 +32,7 @@ public class Enemy extends Character {
 			this.yVelocity = 0.9;
 			this.color = GRUNT_COLOR;
 		} else if(type == "Officer") {
-			this.xVelocity = 3 * -HORI_SPEED;
+			this.xVelocity = -HORI_SPEED;
 			this.color = OFFICER_COLOR;
 		}
 	}
@@ -61,31 +61,36 @@ public class Enemy extends Character {
 	
 	@Override
 	public void platformCollide(Wall wall) {
-		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
-		if(measureBox.intersects(wall.rect)) {
-			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {
-				this.xPos = wall.xPos - this.rect.width;
-			} else {
-				this.xPos = wall.xPos + wall.rect.width;
-			}
-			measureBox.x -= this.xVelocity;
-			this.xVelocity = -this.xVelocity;
-		} else {
-			measureBox.x -= this.xVelocity;
-		} measureBox.y += this.yVelocity;
-		if(measureBox.intersects(wall.rect)) {
-			if(measureBox.y + measureBox.height >= wall.yPos && measureBox.y + measureBox.height < wall.yPos + wall.rect.height) {
-				this.yPos = wall.yPos - this.rect.height;
-				this.isFalling = false;
-			} else {
-				this.yPos = wall.yPos + wall.rect.height;
-				this.isFalling = true;
-			}
-			this.yVelocity = 0;
-		} else {
-			this.isFalling = true;
-		}
+		super.platformCollide(wall);
+//		if(this.xVelocity == 0) {
+//			this.xVelocity = -HORI_SPEED;
+//		}
 	}
+//		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
+//		if(measureBox.intersects(wall.rect)) {
+//			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {
+//				this.xPos = wall.xPos - this.rect.width;
+//			} else {
+//				this.xPos = wall.xPos + wall.rect.width;
+//			}
+//			measureBox.x -= this.xVelocity;
+//			this.xVelocity = -this.xVelocity;
+//		} else {
+//			measureBox.x -= this.xVelocity;
+//		} measureBox.y += this.yVelocity;
+//		if(measureBox.intersects(wall.rect)) {
+//			if(measureBox.y + measureBox.height >= wall.yPos && measureBox.y + measureBox.height < wall.yPos + wall.rect.height) {
+//				this.yPos = wall.yPos - this.rect.height;
+//				this.isFalling = false;
+//			} else {
+//				this.yPos = wall.yPos + wall.rect.height;
+//				this.isFalling = true;
+//			}
+//			this.yVelocity = 0;
+//		} else {
+//			this.isFalling = true;
+//		}
+//	}
 	
 //	public void platformCollide(Wall wall) {
 //		if(this.rect.intersects(wall.rect)) {

@@ -12,12 +12,14 @@ import java.awt.Graphics2D;
 
 public class Jumper extends Enemy {
 	
+	private static final double HORI_SPEED = 3;
 	private static final double JUMP_SPEED = 8;
 	
 	private int ticksUntilJump;
 	
 	public Jumper(double x, double y) {
 		super(x, y);
+		this.xVelocity = HORI_SPEED;
 		this.ticksUntilJump = 0;
 	}
 	
