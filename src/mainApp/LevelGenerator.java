@@ -125,7 +125,12 @@ public class LevelGenerator {
 
     public void generateLevel(int difficulty, int levelNum) {
         File dir = new File("Levels");
-        String levelName = "Level" + levelNum;
+        String singleDigitZero = "";
+        if(levelNum < 10){
+            singleDigitZero = "0";
+        }
+        String levelName = "Level" + singleDigitZero + levelNum;
+
         File newLevel = new File(dir.getAbsolutePath() + "/" + levelName);
         try {
             createFile(newLevel);
