@@ -17,18 +17,16 @@ import javax.swing.Timer;
 public class MainApp {
 	
 	public static final int TICK_DELAY = 15;
+	public static final int FRAME_WIDTH = 1408;
+	public static final int FRAME_HEIGHT = 768;
 	
-	
-	private void runApp() {
-//		System.out.println("Write your cool arcade game here!");
-//		System.out.println("test");
-		
+	private void runApp() {		
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
 
-		frame.setSize(1408, 768);
+		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 
 		
-		GameComponent component = new GameComponent();
+		GameComponent component = new GameComponent(FRAME_WIDTH, FRAME_HEIGHT);
 		
 		JPanel scoreboard = new JPanel();
 		JLabel lives = new JLabel("Lives Remaining: " + component.getLives());
