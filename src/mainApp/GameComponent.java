@@ -173,7 +173,7 @@ public class GameComponent extends JComponent {
 						break;
 					case 4:
 						{
-						Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
+						Enemy newEnemy = new Enemy(xStart, yStart);
 						this.enemies.add(newEnemy);
 						continuousWall = false;
 						}

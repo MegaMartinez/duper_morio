@@ -34,7 +34,10 @@ public class Hero extends Character {
 	}
 	
 	public void changeSpeed(char direction) {
-		if(direction == 'R') {
+		if(direction == '|') {
+			this.yVelocity = 0;
+			return;
+		} else if(direction == 'R') {
 			this.xVelocity = HORI_SPEED;
 			return;
 		} else if(direction == 'L') {
@@ -52,10 +55,7 @@ public class Hero extends Character {
 		} else if(direction == 'D') {
 			this.yVelocity = VERT_SPEED;
 			return;
-		} else if(direction == '|') {
-			this.yVelocity = 0;
-			return;
-		} 
+		}
 	}
 	
 	@Override
