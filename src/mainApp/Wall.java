@@ -6,6 +6,12 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.awt.geom.Line2D;
 
+/**
+ * Class: Wall
+ * @author Team 405
+ * Purpose: Holds position, size, and hitbox information for the platforms and walls. Also draws them and checks collisions
+ */
+
 public class Wall {
 	
 	private static final double WALL_LENGTH = 64;

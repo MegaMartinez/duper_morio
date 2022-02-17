@@ -4,12 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
  * Class: MainApp
  * @author Team 405
- * <br>Purpose: Top level class for CSSE220 Project containing main method 
+ * <br>Purpose: Top level class for CSSE220 Project containing main method, create frame and components 
  * <br>Restrictions: None
  */
 public class MainApp {
@@ -22,9 +24,26 @@ public class MainApp {
 //		System.out.println("test");
 		
 		JFrame frame = new JFrame("Old Duper Morio Cousins");
-		frame.setSize(1000, 800);
+
+		frame.setSize(1408, 768);
+
 		
 		GameComponent component = new GameComponent();
+		
+		JPanel scoreboard = new JPanel();
+		JLabel lives = new JLabel("Lives Remaining: " + component.getLives());
+		
+		Timer t = new Timer(0, new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				lives.setText("Lives Remaining: " + component.getLives());
+			}
+		});
+		t.start();
+		scoreboard.add(lives);
+		frame.add(scoreboard, BorderLayout.SOUTH);
+		
+		
 		component.loadLevel();
 		frame.add(component, BorderLayout.CENTER);
 		

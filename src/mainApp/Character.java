@@ -6,6 +6,13 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
 
+/**
+ * Class: Character
+ * @author Team 405
+ * Purpose: Abstract class that holds necessary information and methods shared by the hero and enemies. Also has the method to check
+ * 			collision with the platforms.
+ */
+
 public abstract class Character {
 	
 	private final double Y_ACCELERATION = 0.3;
@@ -52,9 +59,14 @@ public abstract class Character {
 		g2.fill(rect);
 	}
 	
+	/**
+	 * Method: platformCollide
+	 * @param wall
+	 * Purpose: Handles collisions from all directions between a character and a wall or platform
+	 */
 	public void platformCollide(Wall wall) {
 		
-		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
+		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.xPos + this.xVelocity, this.yPos, this.rect.width, this.rect.height);
 		if(measureBox.intersects(wall.rect)) {
 			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {
 				this.xPos = wall.xPos - this.rect.width;

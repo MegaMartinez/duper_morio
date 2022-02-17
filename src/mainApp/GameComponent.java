@@ -11,7 +11,12 @@ import java.util.Scanner;
 
 import javax.swing.JComponent;
 
-
+/**
+ * Class: GameComponent
+ * @author Team 405
+ * Purpose: Class to run all the game's operations. Handles drawing, movement, and collsions for all objects. Also loads and changes 
+ * 			levels from files.
+ */
 
 public class GameComponent extends JComponent {
 	
@@ -50,6 +55,10 @@ public class GameComponent extends JComponent {
 	
 	public void drawScreen() {
 		this.repaint();
+	}
+	
+	public int getLives() {
+		return this.hero.getLives();
 	}
 	
 	public void moveHero(char direction) {
@@ -104,6 +113,11 @@ public class GameComponent extends JComponent {
 		}
 	}
 	
+	/**
+	 * Method: loadLevel
+	 * Purpose:Reads files and loads levels from them based on the characters in the file
+	 * Restrictions: Files have to be premade with the correct formatting and number of characters for the method to work properly.
+	 */
 	public void loadLevel() {
 		FileReader file = null;
 		try {
@@ -116,12 +130,12 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
-		this.walls.add(new Wall(0, 0, 800, BLOCK_OFFSET));
-		this.walls.add(new Wall(0, 800 - BLOCK_OFFSET, 800, BLOCK_OFFSET));
-		this.walls.add(new Wall(0, BLOCK_OFFSET, BLOCK_OFFSET, 800 - 2*BLOCK_OFFSET));
-		this.walls.add(new Wall(800 - BLOCK_OFFSET, BLOCK_OFFSET, BLOCK_OFFSET, 800 - 2*BLOCK_OFFSET));
-		int xStart = BLOCK_OFFSET;
-		int yStart = BLOCK_OFFSET;
+		this.walls.add(new Wall(0, 0, 1408, 64));
+		this.walls.add(new Wall(0, 704, 1408, 64));
+		this.walls.add(new Wall(0, 64, 64, 704));
+		this.walls.add(new Wall(1344, 64, 64, 704));
+		int xStart = 64;
+		int yStart = 64;
 		boolean continuousWall = false;
 		
 		while(scanner.hasNext()) {
@@ -161,7 +175,9 @@ public class GameComponent extends JComponent {
 						continuousWall = false;
 						}
 						break;
-				} xStart += BLOCK_OFFSET;
+
+				} xStart += 64;
+				
 				// if(Integer.parseInt(ID) == 1) {
 				// 	if(continuousWall) {
 				// 		this.walls.get(this.walls.size()-1).extend();
@@ -186,8 +202,10 @@ public class GameComponent extends JComponent {
 				// 	continuousWall = false;
 				// } xStart += 50;
 			}
-			xStart = BLOCK_OFFSET;
-			yStart += BLOCK_OFFSET;
+
+			xStart = 64;
+			yStart += 64;
+
 			continuousWall = false;
 		}
 		

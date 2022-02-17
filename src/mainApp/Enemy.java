@@ -3,6 +3,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Class: Enemy
+ * @author Team 405
+ * Purpose: Class to hold information for the enemies. Determines the color and type of the enemy. Inherits from the Character class,
+ *  		with different movement and collisions with the hero.
+ */
 public class Enemy extends Character {
 	
 	private static final double HORI_SPEED = 3;
