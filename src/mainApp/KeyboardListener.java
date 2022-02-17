@@ -78,9 +78,7 @@ public class KeyboardListener implements KeyListener {
 //			break;
 
 		case KeyEvent.VK_U:
-			if(this.levelNum < 2) {
-				levelNum += 1;
-			} this.component.changeLevel(true);
+			this.component.changeLevel(true);
 //			this.component.loadLevel(this.levelNum);
 			break;
 		case KeyEvent.VK_D:
