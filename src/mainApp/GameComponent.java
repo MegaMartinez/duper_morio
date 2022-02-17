@@ -118,7 +118,6 @@ public class GameComponent extends JComponent {
 	}
 	
 	/**
-	 * Method: loadLevel
 	 * Purpose:Reads files and loads levels from them based on the characters in the file
 	 * Restrictions: Files have to be premade with the correct formatting and number of characters for the method to work properly.
 	 */

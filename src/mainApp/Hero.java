@@ -29,7 +29,7 @@ public class Hero extends Character {
 		super(300, 300, HERO_WIDTH, HERO_HEIGHT);
 		this.startingX = 300;
 		this.startingY = 300;
-		this.lives = 3;
+		this.lives = 99999;
 //		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, HERO_WIDTH, HERO_HEIGHT);
 	}
 	
@@ -73,8 +73,8 @@ public class Hero extends Character {
 	}
 	
 	/**
-	 * Method: respawn
 	 * Purpose: Resets position, subtracts lives, and checks for the loss condition.
+	 * Restrictions: none
 	 */
 	public void respawn() {
 		this.xPos = this.startingX;

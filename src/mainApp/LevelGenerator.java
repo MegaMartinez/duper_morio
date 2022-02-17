@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Class: LevelGenerator
@@ -16,57 +17,127 @@ import java.util.Random;
 public class LevelGenerator {
 
     private String levelString = "";
-    private String levelTemplate = "";
+    private String templateString = "";
     
-    private void createFile(File dir, File newLevel) throws IOException{
+    private void createFile(File newLevel) throws IOException{
         newLevel.delete();
         newLevel.createNewFile();
+        return;
     }
 
-    private void writeLevel(int difficulty) {
+    private boolean percentTest(int percent){
         Random rand = new Random();
-        for(int row = 0; row < 13; row++){
-            switch(row){
-                case 0:
-                    break;
-            }
-            for(int column = 0; column < 13; column++){
-                switch(column){
-                    default:
-                        this.levelString += "0";
-                        break;
-                }
+        int number = rand.nextInt(100);
+        return number <= percent;
+    }
 
-                if(column != 12){
+    private void writeLevel(int[] stats) {
+        int index = 0;
+        for(int row = 0; row < 10; row++){
+            for(int column = 0; column < 20; column++){
+                switch(this.templateString.charAt(index)){
+                    case '!':
+                        if(percentTest(stats[0])){
+                            this.levelString += "1";
+                        } else {
+                            this.levelString += "0";
+                        }
+                        break;
+                    case '@':
+                        if(percentTest(50)){
+                            this.levelString += "2";
+                        } else {
+                            this.levelString += "0";
+                        }
+                        break;
+                    case '#':
+                        if(stats[2] > 0){
+                            if(percentTest(stats[1])){
+                                this.levelString += "4";
+                            } else {
+                                this.levelString += "3";
+                            }
+                        } else {
+                            this.levelString += "0";
+                        }
+                        stats[2]--;
+                        break;
+                    default:
+                        this.levelString += String.valueOf(this.templateString.charAt(index));
+                } index++;
+
+                if(column != 19){
                     this.levelString += ",";
                 }
             }
-            if(row != 12){
+            if(row != 9){
                 this.levelString += "\n";
             }
         }
+        return;
     }
 
-    private void writeIntoFile(File dir, File newLevel) throws IOException{
+    private void writeIntoFile(File newLevel) throws IOException{
         FileWriter writer = new FileWriter(newLevel);
         writer.write(this.levelString);
         writer.close();
+        return;
+    }
+
+    private void readIntoString(FileReader template) throws IOException{
+        Scanner scanner = new Scanner(template);
+        while(scanner.hasNext()){
+            String[] lineOfIDs = scanner.nextLine().trim().split(",");
+            for(int i = 0; i < lineOfIDs.length; i++){
+                this.templateString += lineOfIDs[i];
+            }
+        }
+        scanner.close();
+        return;
+    }
+
+    private FileReader pickTemplate() throws FileNotFoundException {
+        File dir = new File("LevelTemplates");
+        File tempFile = new File(dir.getAbsolutePath() + "/basic1");
+        FileReader template = new FileReader(tempFile);
+        return template;
+    }
+
+    private int[] adjustDifficulty(int difficulty){
+        /*
+        stats[0] is percent chance for block spawn
+        stats[1] is percent of spawned enemies that are officers or grunts
+                 lower number means more grunts, higher number means more officers
+        stats[2] is the minimum amount of enemy spawns
+        */
+        int[] stats = {0, 0, 2};
+        
+        stats[0] += difficulty * 10;
+        stats[1] += difficulty * 10;
+        if(difficulty > 8){
+            stats[2] += 8;
+        } else {
+            stats[2] += difficulty;
+        }
+
+        return stats;
     }
 
     public void generateLevel(int difficulty, int levelNum) {
-        writeLevel(difficulty);
         File dir = new File("Levels");
         String levelName = "Level" + levelNum;
         File newLevel = new File(dir.getAbsolutePath() + "/" + levelName);
         try {
-            createFile(dir, newLevel);
-            writeIntoFile(dir, newLevel);
+            createFile(newLevel);
+            readIntoString(pickTemplate());
+            writeLevel(adjustDifficulty(difficulty));
+            writeIntoFile(newLevel);
         } catch (IOException e) {
             System.out.println("\nFAILED TO GENERATE FILE\n");
             e.printStackTrace();
         }
         this.levelString = "";
-        this.levelTemplate = "";
+        this.templateString = "";
         return;
     }
 

@@ -60,9 +60,9 @@ public abstract class Character {
 	}
 	
 	/**
-	 * Method: platformCollide
-	 * @param wall
+	 * @param wall used to check collision with certain wall
 	 * Purpose: Handles collisions from all directions between a character and a wall or platform
+	 * Restrictions: none
 	 */
 	public void platformCollide(Wall wall) {
 		
