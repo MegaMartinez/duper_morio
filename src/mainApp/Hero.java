@@ -2,10 +2,11 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Class: Enemy
+ * Class: Hero
  * @author Team 405
  * Purpose: Class to hold information for the Hero. Inherits from the Character class. Also has a variable to track the hero's lives
  * 			and a method to respawn the hero while it has lives or exit the program if it doesn't. 		
@@ -13,7 +14,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Hero extends Character {
 	
-	private static final int HORI_SPEED = 6;
+	private static final int HORI_SPEED = 7;
 	private static final int VERT_SPEED = 8;
 	private static final int LIVES = 3;
 	private static final int STARTING_X = 300;
@@ -27,6 +28,7 @@ public class Hero extends Character {
 	private boolean isPoweredUp;
 	private int powerUpFrameCount;
 	private Color color;
+	private Image image;
 	
 	
 	private int lives;

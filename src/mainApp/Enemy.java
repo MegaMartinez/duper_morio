@@ -6,12 +6,13 @@ import java.awt.geom.Rectangle2D;
 /**
  * Class: Enemy
  * @author Team 405
- * Purpose: Class to hold information for the enemies. Determines the color and type of the enemy. Inherits from the Character class,
- *  		with different movement and collisions with the hero.
+ * Purpose: Class to hold information for the enemies. Inherits from the Character class,
+ * with different movement and collisions with the hero. Specifically, it has a method to
+ * check for player collision and act accordingly, plus it reverses when hitting a wall.
  */
 public class Enemy extends Character {
 	
-	private static final double HORI_SPEED = 7;
+	private static final double HORI_SPEED = 6;
 	private static final double ENEMY_WIDTH = 50;
 	private static final double ENEMY_HEIGHT = 50;
 	
