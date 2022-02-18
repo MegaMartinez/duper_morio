@@ -27,8 +27,7 @@ public class PowerUp extends Wall {
 		if(super.checkCollision(hero)) {
 			hero.makePoweredUp(true);
 			return true;
-		} return false;
-		
+		} return false;	
 	}
 	
 }
