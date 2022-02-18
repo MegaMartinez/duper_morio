@@ -15,7 +15,7 @@ public class Enemy extends Character {
 	private static final double ENEMY_WIDTH = 50;
 	private static final double ENEMY_HEIGHT = 50;
 	
-	private int direction = 1;
+	private int direction = -1;
 	
 //	private static final Color GRUNT_COLOR = Color.BLUE;
 //	private static final Color OFFICER_COLOR = Color.GREEN;
@@ -42,11 +42,11 @@ public class Enemy extends Character {
 	
 	@Override
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(this.color);
+		g2.setColor(Color.GREEN);
 		g2.fill(rect);
 	}
 	
-	public Color getColor() {return this.color;}
+//	public Color getColor() {return this.color;}
 	
 	public void collides(Hero hero) {
 		if (this.rect.intersects(hero.rect)) {
@@ -64,37 +64,37 @@ public class Enemy extends Character {
 	
 	@Override
 	public void platformCollide(Wall wall) {
-//		super.platformCollide(wall);
-//		if(this.xVelocity == 0) {
-//			this.xVelocity = HORI_SPEED * this.direction;
-//			this.direction *= -1;
-//		}
-//	}
-		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
-		if(measureBox.intersects(wall.rect)) {
-			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {
-				this.xPos = wall.xPos - this.rect.width;
-			} else {
-				this.xPos = wall.xPos + wall.rect.width;
-			}
-			measureBox.x -= this.xVelocity;
-			this.xVelocity = -this.xVelocity;
-		} else {
-			measureBox.x -= this.xVelocity;
-		} measureBox.y += this.yVelocity;
-		if(measureBox.intersects(wall.rect)) {
-			if(measureBox.y + measureBox.height >= wall.yPos && measureBox.y + measureBox.height < wall.yPos + wall.rect.height) {
-				this.yPos = wall.yPos - this.rect.height;
-				this.isFalling = false;
-			} else {
-				this.yPos = wall.yPos + wall.rect.height;
-				this.isFalling = true;
-			}
-			this.yVelocity = 0;
-		} else {
-			this.isFalling = true;
+		super.platformCollide(wall);
+		if(this.xVelocity == 0) {
+			this.xVelocity = HORI_SPEED * this.direction;
+			this.direction *= -1;
 		}
 	}
+//		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
+//		if(measureBox.intersects(wall.rect)) {
+//			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {
+//				this.xPos = wall.xPos - this.rect.width;
+//			} else {
+//				this.xPos = wall.xPos + wall.rect.width;
+//			}
+//			measureBox.x -= this.xVelocity;
+//			this.xVelocity = -this.xVelocity;
+//		} else {
+//			measureBox.x -= this.xVelocity;
+//		} measureBox.y += this.yVelocity;
+//		if(measureBox.intersects(wall.rect)) {
+//			if(measureBox.y + measureBox.height >= wall.yPos && measureBox.y + measureBox.height < wall.yPos + wall.rect.height) {
+//				this.yPos = wall.yPos - this.rect.height;
+//				this.isFalling = false;
+//			} else {
+//				this.yPos = wall.yPos + wall.rect.height;
+//				this.isFalling = true;
+//			}
+//			this.yVelocity = 0;
+//		} else {
+//			this.isFalling = true;
+//		}
+//	}
 	
 //	public void platformCollide(Wall wall) {
 //		if(this.rect.intersects(wall.rect)) {

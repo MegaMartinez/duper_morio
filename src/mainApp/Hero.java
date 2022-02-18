@@ -21,6 +21,7 @@ public class Hero extends Character {
 	
 	private double startingX;
 	private double startingY;
+	private boolean isPoweredUp;
 	
 	
 	private int lives;
