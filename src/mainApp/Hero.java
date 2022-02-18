@@ -13,9 +13,9 @@ import java.awt.geom.Rectangle2D;
 
 public class Hero extends Character {
 	
-	private static final int HORI_SPEED = 5;
+	private static final int HORI_SPEED = 6;
 	private static final int VERT_SPEED = 8;
-	private static final int LIVES = 99;
+	private static final int LIVES = 3;
 	private static final int STARTING_X = 300;
 	private static final int STARTING_Y = 300;
 	private static final double HERO_WIDTH = 50;

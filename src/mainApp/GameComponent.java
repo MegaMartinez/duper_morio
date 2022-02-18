@@ -94,7 +94,6 @@ public class GameComponent extends JComponent {
 		}
 
 		for(int k = 0; k < this.bombs.size(); k++) {
-//			if(bombs.get(k).rect.intersects(hero.rect)) {
 			if(bombs.get(k).checkCollision(this.hero)) {
 				bombs.remove(k);
 			}
@@ -162,8 +161,6 @@ public class GameComponent extends JComponent {
 						break;
 					case 3:
 						{
-//						Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
-//						this.enemies.add(newEnemy);
 						Jumper newJumper = new Jumper(xStart, yStart);
 						this.enemies.add(newJumper);
 						continuousWall = false;
