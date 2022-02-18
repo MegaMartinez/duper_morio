@@ -48,7 +48,7 @@ public class Enemy extends Character {
 	
 //	public Color getColor() {return this.color;}
 	
-	public void collides(Hero hero) {
+	public void checkCollision(Hero hero) {
 		if (this.rect.intersects(hero.rect)) {
 			hero.respawn();
 		}
@@ -57,9 +57,6 @@ public class Enemy extends Character {
 	@Override
 	public void update() {
 		super.update();
-//		if(this.xPos == 50 || this.xPos == 650) {
-//			this.xVelocity = -this.xVelocity;
-//		}
 	}
 	
 	@Override
@@ -93,13 +90,6 @@ public class Enemy extends Character {
 //			this.yVelocity = 0;
 //		} else {
 //			this.isFalling = true;
-//		}
-//	}
-	
-//	public void platformCollide(Wall wall) {
-//		if(this.rect.intersects(wall.rect)) {
-//			this.yVelocity = 0;
-//			this.yCoord = (int) wall.yPos - ENEMY_HEIGHT;
 //		}
 //	}
 

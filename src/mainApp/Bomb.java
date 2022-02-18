@@ -15,13 +15,13 @@ import java.awt.geom.Rectangle2D.Double;
 public class Bomb extends Wall {
 	
 	private final double BOMB_WIDTH = 32;
-	private final double BOMB_LENGTH = 32;
+	private final double BOMB_HEIGHT = 32;
 	
 	public Bomb(int x, int y) {
 		super(x, y);
-		this.xPos = x + 16;
-		this.yPos = y + 16;
-		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, BOMB_WIDTH, BOMB_LENGTH);
+		this.xPos = x + BOMB_WIDTH/2;
+		this.yPos = y + BOMB_HEIGHT/2;
+		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, BOMB_WIDTH, BOMB_HEIGHT);
 	}
 	
 	public void drawOn(Graphics2D g2) {
@@ -29,8 +29,8 @@ public class Bomb extends Wall {
 		g2.fill(rect);
 	}
 	
-	public boolean checkCollision(Hero hero) {
-		return this.rect.intersects(hero.rect);
-	}
+//	public boolean checkCollision(Hero hero) {
+//		return this.rect.intersects(hero.rect);
+//	}
 
 }

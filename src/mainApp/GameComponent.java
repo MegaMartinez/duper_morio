@@ -72,16 +72,13 @@ public class GameComponent extends JComponent {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
-//		g2.setColor(Color.RED);
 		for(Wall wall : this.walls) {
 			wall.drawOn(g2);
 		}
-//		g2.setColor(Color.YELLOW);
 		for(Bomb bomb : this.bombs) {
 			bomb.drawOn(g2);
 		}
 		for(Enemy enemy : this.enemies) {
-//			g2.setColor(enemy.getColor());
 			enemy.drawOn(g2);
 		}
 		this.hero.drawOn(g2);
@@ -97,13 +94,14 @@ public class GameComponent extends JComponent {
 		}
 
 		for(int k = 0; k < this.bombs.size(); k++) {
-			if(bombs.get(k).rect.intersects(hero.rect)) {
+//			if(bombs.get(k).rect.intersects(hero.rect)) {
+			if(bombs.get(k).checkCollision(this.hero)) {
 				bombs.remove(k);
 			}
 		}
 		
 		for (Enemy enemy : enemies) {
-			enemy.collides(hero);
+			enemy.checkCollision(hero);
 		}
 	}
 	

@@ -15,23 +15,37 @@ public class Hero extends Character {
 	
 	private static final int HORI_SPEED = 5;
 	private static final int VERT_SPEED = 8;
-
+	private static final int LIVES = 99;
+	private static final int STARTING_X = 300;
+	private static final int STARTING_Y = 300;
 	private static final double HERO_WIDTH = 50;
 	private static final double HERO_HEIGHT = 50;
 	
 	private double startingX;
 	private double startingY;
 	private boolean isPoweredUp;
+	private int powerUpFrameCount;
 	
 	
 	private int lives;
 	
 	public Hero() {
-		super(300, 300, HERO_WIDTH, HERO_HEIGHT);
-		this.startingX = 300;
-		this.startingY = 300;
-		this.lives = 99999;
-//		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, HERO_WIDTH, HERO_HEIGHT);
+		super(STARTING_X, STARTING_Y, HERO_WIDTH, HERO_HEIGHT);
+		this.startingX = STARTING_X;
+		this.startingY = STARTING_Y;
+		this.lives = LIVES;
+		this.isPoweredUp = false;
+		this.powerUpFrameCount = 0;
+	}
+	
+	@Override
+	public void update() {
+		super.update();
+		this.powerUpFrameCount++;
+		if(this.powerUpFrameCount > 80) {
+			this.isPoweredUp = false;
+			this.powerUpFrameCount = 0;
+		}
 	}
 	
 	public void changeSpeed(char direction) {
@@ -65,12 +79,13 @@ public class Hero extends Character {
 		g2.fill(rect);
 	}
 
-	public int getLives() {
-		return lives;
-	}
+	public int getLives() {return lives;}
 
-	public void setLives(int lives) {
-		this.lives = lives;
+	public void setLives(int lives) {this.lives = lives;}
+	
+	public void makePoweredUp() {
+		this.isPoweredUp = true;
+		this.powerUpFrameCount = 0;
 	}
 	
 	/**
@@ -86,18 +101,4 @@ public class Hero extends Character {
 			System.exit(1);
 		}
 	}
-	
-	
-	
-//	public void platformCollide(Wall wall) {
-//		if(this.rect.intersects(wall.rect)) {
-//			this.yVelocity = 0;
-//			this.yPos = (int) wall.yPos - HERO_HEIGHT;
-//			this.isFalling = false;
-//		}
-//		else {
-//			this.isFalling = true;
-//		}
-//	}
-
 }

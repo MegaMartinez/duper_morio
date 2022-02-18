@@ -14,6 +14,7 @@ public class Jumper extends Enemy {
 	
 	private static final double HORI_SPEED = 3;
 	private static final double JUMP_SPEED = 8;
+	private static final int JUMP_COOLDOWN = 60;
 	
 	private int ticksUntilJump;
 	
@@ -33,9 +34,7 @@ public class Jumper extends Enemy {
 	public void update() {
 		super.update();
 		this.ticksUntilJump += 1;
-//		System.out.println("Jumper's current y velocity is: " + this.yVelocity);
-		if(this.ticksUntilJump >= 40) {
-//			System.out.println("Jumper should be jumping.");
+		if(this.ticksUntilJump >= 60 && this.isFalling == false) {
 			this.yVelocity = -JUMP_SPEED;
 			this.ticksUntilJump = 0;
 		}

@@ -25,14 +25,14 @@ public abstract class Character {
 	protected Rectangle2D.Double rect;
 	protected boolean isFalling;
 	
-	public Character() {
-		this.isFalling = true;
-		this.xPos = 200;
-		this.yPos = 300;
-		this.xVelocity = 0;
-		this.yVelocity = 0;
-		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, 50, 50);
-	}
+//	public Character() {
+//		this.isFalling = true;
+//		this.xPos = 200;
+//		this.yPos = 300;
+//		this.xVelocity = 0;
+//		this.yVelocity = 0;
+//		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, 50, 50);
+//	}
 	
 	public Character(double x, double y, double width, double height) {
 		this.isFalling = true;
@@ -46,8 +46,6 @@ public abstract class Character {
 	public void update() {
 		this.xPos += this.xVelocity;
 		this.yPos += this.yVelocity;
-//		this.rect.x += this.xVelocity;
-//		this.rect.y += this.yVelocity;
 		this.rect.x = this.xPos;
 		this.rect.y = this.yPos;
 		if(this.isFalling) {

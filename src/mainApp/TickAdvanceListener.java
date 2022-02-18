@@ -3,6 +3,8 @@ package mainApp;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JLabel;
+
 /**
  * Class: TickAdvanceListener
  * @author Team 405
@@ -12,9 +14,11 @@ import java.awt.event.ActionListener;
 public class TickAdvanceListener implements ActionListener {
 	
 	private GameComponent gameComponent;
+	private JLabel lifeDisplay;
 
-	public TickAdvanceListener(GameComponent gameComponent) {
+	public TickAdvanceListener(GameComponent gameComponent, JLabel lifeDisplay) {
 		this.gameComponent = gameComponent;
+		this.lifeDisplay = lifeDisplay;
 	}
 
 	@Override
@@ -25,5 +29,6 @@ public class TickAdvanceListener implements ActionListener {
 	public void advanceOneTick() {
 		this.gameComponent.updateState();
 		this.gameComponent.drawScreen();
+		this.lifeDisplay.setText("Lives Remaining: " + this.gameComponent.getLives());
 	}
 }

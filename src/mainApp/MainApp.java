@@ -31,13 +31,6 @@ public class MainApp {
 		JPanel scoreboard = new JPanel();
 		JLabel lives = new JLabel("Lives Remaining: " + component.getLives());
 		
-		Timer t = new Timer(0, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				lives.setText("Lives Remaining: " + component.getLives());
-			}
-		});
-		t.start();
 		scoreboard.add(lives);
 		frame.add(scoreboard, BorderLayout.SOUTH);
 		
@@ -45,7 +38,7 @@ public class MainApp {
 		component.loadLevel();
 		frame.add(component, BorderLayout.CENTER);
 		
-		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component);
+		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component, lives);
 		Timer timer = new Timer(TICK_DELAY, tickAdvanceListener);
 		timer.start();
 		
