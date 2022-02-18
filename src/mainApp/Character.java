@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D.Double;
 
 public abstract class Character {
 	
-	private final double Y_ACCELERATION = 0.3;
+	private final double Y_ACCELERATION = 0.2;
 
 	protected double xPos;
 	protected double yPos;
@@ -48,9 +48,9 @@ public abstract class Character {
 		this.yPos += this.yVelocity;
 		this.rect.x = this.xPos;
 		this.rect.y = this.yPos;
-		if(this.isFalling) {
+//		if(this.isFalling) {
 			this.yVelocity += this.Y_ACCELERATION;
-		}
+//		}
 	}
 	
 	public void drawOn(Graphics2D g2) {

@@ -52,23 +52,20 @@ public class Hero extends Character {
 		if(direction == '|') {
 			this.yVelocity = 0;
 			return;
+		} else if(direction == '-') {
+			this.xVelocity = 0;
+			return;
+		} else if(direction == 'U') {
+			this.yVelocity = -VERT_SPEED;
+			return;
+		} else if(direction == 'D') {
+			this.yVelocity = VERT_SPEED;
+			return;
 		} else if(direction == 'R') {
 			this.xVelocity = HORI_SPEED;
 			return;
 		} else if(direction == 'L') {
 			this.xVelocity = -HORI_SPEED;
-			return;
-		} else if(direction == '-') {
-			this.xVelocity = 0;
-			return;
-		} else if(direction == 'U') {
-//			if(this.isFalling == true) {
-//				return;
-//			}
-			this.yVelocity = -VERT_SPEED;
-			return;
-		} else if(direction == 'D') {
-			this.yVelocity = VERT_SPEED;
 			return;
 		}
 	}

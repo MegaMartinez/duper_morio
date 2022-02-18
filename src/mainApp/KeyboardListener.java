@@ -70,7 +70,7 @@ public class KeyboardListener implements KeyListener {
 			this.component.moveHero('-');
 			break;
 		case KeyEvent.VK_UP:
-			this.component.moveHero('U');
+//			this.component.moveHero('U');
 			this.component.moveHero('|');
 			break;
 //		case KeyEvent.VK_DOWN:
@@ -79,13 +79,11 @@ public class KeyboardListener implements KeyListener {
 
 		case KeyEvent.VK_U:
 			this.component.changeLevel(true);
-//			this.component.loadLevel(this.levelNum);
 			break;
 		case KeyEvent.VK_D:
 			if(this.levelNum > 1) {
 				levelNum -= 1;
 			} this.component.changeLevel(false);
-//			this.component.loadLevel(this.levelNum);
 			break;
 		}
 	}
