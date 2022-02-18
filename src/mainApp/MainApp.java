@@ -30,15 +30,19 @@ public class MainApp {
 		
 		JPanel scoreboard = new JPanel();
 		JLabel lives = new JLabel("Lives Remaining: " + component.getLives());
+		JLabel score = new JLabel("Score: " + component.getScore());
+		JLabel space = new JLabel("    ");
 		
 		scoreboard.add(lives);
+		scoreboard.add(space);
+		scoreboard.add(score);
 		frame.add(scoreboard, BorderLayout.SOUTH);
 		
 		
 		component.loadLevel();
 		frame.add(component, BorderLayout.CENTER);
 		
-		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component, lives);
+		TickAdvanceListener tickAdvanceListener = new TickAdvanceListener(component, lives, score);
 		Timer timer = new Timer(TICK_DELAY, tickAdvanceListener);
 		timer.start();
 		

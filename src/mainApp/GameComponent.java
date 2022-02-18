@@ -31,6 +31,7 @@ public class GameComponent extends JComponent {
 	private int levelNum = 1;
 	private int frameWidth;
 	private int frameHeight;
+	private int score;
 	
 	public GameComponent(int frameWidth, int frameHeight) {
 		this.hero = new Hero();
@@ -41,6 +42,7 @@ public class GameComponent extends JComponent {
 		this.powerUps = new ArrayList<PowerUp>();
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
+		this.setScore(0);
 		
 		File dir = new File("Levels");
 		for(File level : dir.listFiles()) {
@@ -101,6 +103,7 @@ public class GameComponent extends JComponent {
 		for(int k = 0; k < this.bombs.size(); k++) {
 			if(bombs.get(k).checkCollision(this.hero)) {
 				bombs.remove(k);
+				this.score += 50;
 			}
 		}
 		for(int k = 0; k < this.powerUps.size(); k++) {
@@ -114,6 +117,7 @@ public class GameComponent extends JComponent {
 		for(int k = 0; k < this.enemies.size(); k++) {
 			if(enemies.get(k).checkCollision(this.hero)) {
 				enemies.remove(k);
+				this.score += 100;
 			}
 		}
 	}
@@ -224,6 +228,14 @@ public class GameComponent extends JComponent {
 			continuousWall = false;
 		}
 		
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 }

@@ -15,10 +15,12 @@ public class TickAdvanceListener implements ActionListener {
 	
 	private GameComponent gameComponent;
 	private JLabel lifeDisplay;
+	private JLabel scoreDisplay;
 
-	public TickAdvanceListener(GameComponent gameComponent, JLabel lifeDisplay) {
+	public TickAdvanceListener(GameComponent gameComponent, JLabel lifeDisplay, JLabel scoreDisplay) {
 		this.gameComponent = gameComponent;
 		this.lifeDisplay = lifeDisplay;
+		this.scoreDisplay = scoreDisplay;
 	}
 
 	@Override
@@ -30,5 +32,6 @@ public class TickAdvanceListener implements ActionListener {
 		this.gameComponent.updateState();
 		this.gameComponent.drawScreen();
 		this.lifeDisplay.setText("Lives Remaining: " + this.gameComponent.getLives());
+		this.scoreDisplay.setText("Score: " + this.gameComponent.getScore());
 	}
 }
