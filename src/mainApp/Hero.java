@@ -3,7 +3,9 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.ImageObserver;
 
 /**
  * Class: Hero
@@ -41,6 +43,7 @@ public class Hero extends Character {
 		this.isPoweredUp = false;
 		this.powerUpFrameCount = 0;
 		this.color = Color.BLACK;
+//		this.image = Toolkit.getDefaultToolkit().getImage("FILENAME");
 	}
 	
 	@Override
@@ -80,6 +83,8 @@ public class Hero extends Character {
 	public void drawOn(Graphics2D g2) {
 		g2.setColor(this.color);
 		g2.fill(rect);
+//		ImageObserver observer = null;
+//		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 
 	public int getLives() {return lives;}
