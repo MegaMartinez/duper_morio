@@ -50,6 +50,10 @@ public class GameComponent extends JComponent {
 		for(File level : dir.listFiles()) {
 			this.levels.add(level.getAbsolutePath());
 		}
+		File dir2 = new File("images");
+		for(File image : dir2.listFiles()) {
+			System.out.println(image.getAbsolutePath());
+		}
 	}
 	
 	public void updateState() {

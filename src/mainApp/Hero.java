@@ -21,7 +21,7 @@ public class Hero extends Character {
 	private static final int LIVES = 3;
 	private static final int STARTING_X = 300;
 	private static final int STARTING_Y = 300;
-	private static final int INVICIBILITY_TIME = 2000;
+	private static final int INVICIBILITY_TIME = 200;
 	private static final double HERO_WIDTH = 32;
 	private static final double HERO_HEIGHT = 32;
 	
@@ -43,7 +43,8 @@ public class Hero extends Character {
 		this.isPoweredUp = false;
 		this.powerUpFrameCount = 0;
 		this.color = Color.BLACK;
-//		this.image = Toolkit.getDefaultToolkit().getImage("FILENAME");
+//		this.image = Toolkit.getDefaultToolkit().getImage("images\\grass_tile.png");
+//		this.image = new Image("images\grass_tile.png");
 	}
 	
 	@Override

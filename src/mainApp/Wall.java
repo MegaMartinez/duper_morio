@@ -2,6 +2,8 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.awt.geom.Line2D;
@@ -14,22 +16,25 @@ import java.awt.geom.Line2D;
 
 public class Wall {
 	
-	private static final double WALL_LENGTH = 64;
+	private static final double WALL_WIDTH = 64;
 	private static final double WALL_HEIGHT = 64;
 
 	protected double xPos;
 	protected double yPos;
+	protected Image image;
 	protected Rectangle2D.Double rect;
 	
 	public Wall(int x, int y) {
 		this.xPos = x;
 		this.yPos = y;
-		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, WALL_LENGTH, WALL_HEIGHT);
+		this.image = Toolkit.getDefaultToolkit().getImage("images\\grass_tile.png");
+		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, WALL_WIDTH, WALL_HEIGHT);
 	}
 	
 	public Wall(int x, int y, double width, double height) {
 		this.xPos = x;
 		this.yPos = y;
+		this.image = Toolkit.getDefaultToolkit().getImage("images\\grass_tile.png");
 		this.rect = new Rectangle2D.Double(x, y, width, height);
 	}
 	
@@ -41,12 +46,22 @@ public class Wall {
 	}
 	
 	public void extend() {
-		this.rect.width += WALL_LENGTH;
+		this.rect.width += WALL_WIDTH;
 	}
 	
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(Color.RED);
-		g2.fill(rect);
+//		g2.setColor(Color.RED);
+//		g2.fill(rect);
+		int xStart = (int) this.xPos;
+		int yStart = (int) this.yPos;
+		for(int k = 0; k < this.rect.width / WALL_WIDTH; k++) {
+			g2.drawImage(this.image, xStart, (int) this.yPos, null);
+			xStart += WALL_WIDTH;
+		}
+		for(int k = 1; k < this.rect.height / WALL_HEIGHT; k++) {
+			g2.drawImage(this.image, (int) this.xPos, yStart, null);
+			yStart += WALL_WIDTH;
+		}
 	}
 	
 }
