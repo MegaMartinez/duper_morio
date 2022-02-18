@@ -1,12 +1,9 @@
 package mainApp;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-import java.awt.geom.Line2D;
 
 /**
  * Class: Wall
@@ -38,9 +35,6 @@ public class Wall {
 		this.rect = new Rectangle2D.Double(x, y, width, height);
 	}
 	
-//	public boolean checkCollision(Rectangle2D.Double hero) {
-//		return this.rect.contains(hero);
-//	}
 	public boolean checkCollision(Hero hero) {
 		return this.rect.intersects(hero.rect);
 	}
@@ -50,8 +44,6 @@ public class Wall {
 	}
 	
 	public void drawOn(Graphics2D g2) {
-//		g2.setColor(Color.RED);
-//		g2.fill(rect);
 		int xStart = (int) this.xPos;
 		int yStart = (int) this.yPos;
 		for(int k = 0; k < this.rect.width / WALL_WIDTH; k++) {

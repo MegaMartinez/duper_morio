@@ -1,11 +1,8 @@
 package mainApp;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 
 /**
  * Class: Character
@@ -26,15 +23,6 @@ public abstract class Character {
 	protected Rectangle2D.Double rect;
 	protected boolean isFalling;
 	
-//	public Character() {
-//		this.isFalling = true;
-//		this.xPos = 200;
-//		this.yPos = 300;
-//		this.xVelocity = 0;
-//		this.yVelocity = 0;
-//		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, 50, 50);
-//	}
-	
 	public Character(double x, double y, double width, double height) {
 		this.isFalling = true;
 		this.xPos = x;
@@ -49,13 +37,10 @@ public abstract class Character {
 		this.yPos += this.yVelocity;
 		this.rect.x = this.xPos;
 		this.rect.y = this.yPos;
-//		if(this.isFalling) {
-			this.yVelocity += this.Y_ACCELERATION;
-//		}
+		this.yVelocity += this.Y_ACCELERATION;
 	}
 	
 	public void drawOn(Graphics2D g2) {
-//		g2.fill(rect);
 		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 	

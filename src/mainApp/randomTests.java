@@ -1,15 +1,23 @@
 package mainApp;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-
 import org.junit.Test;
 
 public class randomTests {
+
+    /*
+    
+    This was simply a test class for the level generator. We still keep it around in case we need to manually activate it.
+    
+    */
+
     @Test
     public void testLevelCreate(){
         LevelGenerator creator = new LevelGenerator();
+
+        //this is NOT the same code used when the level generator is actually called, that is done through a loop
+        //this is merely written like this for testing purposes
+        
+        creator.generateLevel(0, 2);
         creator.generateLevel(0, 3);
         creator.generateLevel(1, 4);
         creator.generateLevel(2, 5);

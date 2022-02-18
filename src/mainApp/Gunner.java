@@ -15,8 +15,7 @@ import java.util.ArrayList;
 public class Gunner extends Enemy {
 	
 	private static final double GUNNER_HORI_SPEED = 2.5;
-	private static final double GUNNER_JUMP_SPEED = 12;
-	private static final int SHOOT_COOLDOWN = 150;
+	private static final int SHOOT_COOLDOWN = 300;
 	
 	private int ticksUntilShoot;
 	private ArrayList<Bullet> bullets;
@@ -38,20 +37,7 @@ public class Gunner extends Enemy {
 		for(Bullet bullet : this.bullets) {
 			bullet.drawOn(g2);
 		}
-//		g2.setColor(Color.BLUE);
-//		g2.fill(rect);
-//		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
-	
-//	@Override
-//	public void update() {
-//		super.update();
-//		this.ticksUntilJump += 1;
-//		if(this.ticksUntilJump >= JUMP_COOLDOWN) {
-//			this.yVelocity = -GUNNER_JUMP_SPEED;
-//			this.ticksUntilJump = 0;
-//		}
-//	}
 	
 	public void updateBullets(Hero hero) {
 		for(int k = 0; k < this.bullets.size(); k++) {
@@ -59,7 +45,7 @@ public class Gunner extends Enemy {
 			if(bullets.get(k).checkCollision(hero)) {
 				this.bullets.remove(k);
 				if(hero.getIsPoweredUp() == false) {
-					hero.respawn();
+					hero.respawn(true);
 				}
 			} else if(this.bullets.get(k).getX() <= 0 || this.bullets.get(k).getX() >= 1408 ||
 					this.bullets.get(k).getY() <= 0 || this.bullets.get(k).getY() >= 768) {

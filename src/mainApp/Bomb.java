@@ -1,10 +1,8 @@
 package mainApp;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 
 /**
  * Class: Bomb
@@ -28,15 +26,9 @@ public class Bomb extends Wall {
 	}
 	
 	public void drawOn(Graphics2D g2) {
-//		g2.setColor(Color.YELLOW);
-//		g2.fill(rect);
 		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 	
 	public int getScore() {return BOMB_SCORE;}
 	
-//	public boolean checkCollision(Hero hero) {
-//		return this.rect.intersects(hero.rect);
-//	}
-
 }

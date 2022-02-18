@@ -1,16 +1,12 @@
 package mainApp;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.geom.Rectangle2D.Double;
 
 public class Bullet extends Wall {
 	
 	private static final double BULLET_SIZE = 8;
 	private static final double BULLET_SPEED = 3;
 	
-	private double angle;
 	private double xVelocity;
 	private double yVelocity;
 	

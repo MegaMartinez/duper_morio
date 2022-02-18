@@ -1,8 +1,6 @@
 package mainApp;
-import java.awt.Color;
-import java.awt.Graphics2D;
+
 import java.awt.Toolkit;
-import java.awt.geom.Rectangle2D;
 
 /**
  * Class: Enemy
@@ -24,12 +22,7 @@ public class Enemy extends Character {
 	protected int direction = -1;
 	protected int ticksUntilJump;
 	protected int score;
-	
-//	private static final Color GRUNT_COLOR = Color.BLUE;
-//	private static final Color OFFICER_COLOR = Color.GREEN;
-	
-	private Color color;
-	
+		
 	public Enemy(double x, double y) {
 		super(x, y, ENEMY_WIDTH, ENEMY_HEIGHT);
 		this.xVelocity = HORI_SPEED;
@@ -39,18 +32,6 @@ public class Enemy extends Character {
 		this.image = Toolkit.getDefaultToolkit().getImage("images\\goomba.png");
 		this.score = ENEMY_SCORE;
 	}
-	
-//	public Enemy(double x, double y, String type) {
-//		super(x, y, ENEMY_WIDTH, ENEMY_HEIGHT);
-//		if(type == "Grunt") {
-//			this.xVelocity = HORI_SPEED;
-//			this.yVelocity = 0.9;
-//			this.color = GRUNT_COLOR;
-//		} else if(type == "Officer") {
-//			this.xVelocity = -HORI_SPEED;
-//			this.color = OFFICER_COLOR;
-//		}
-//	}
 	
 	@Override
 	public void update() {
@@ -62,21 +43,12 @@ public class Enemy extends Character {
 		}
 	}
 	
-//	@Override
-//	public void drawOn(Graphics2D g2) {
-////		g2.setColor(Color.GREEN);
-////		g2.fill(rect);
-//		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
-//	}
-	
-//	public Color getColor() {return this.color;}
-	
 	public boolean checkCollision(Hero hero) {
 		if (this.rect.intersects(hero.rect)) {
 			if(hero.getIsPoweredUp()) {
 				return true;
 			} else {
-				hero.respawn();
+				hero.respawn(true);
 			}
 		} return false;
 	}

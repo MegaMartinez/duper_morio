@@ -53,9 +53,9 @@ public class LevelGenerator {
                     case '#':
                         if(stats[2] > 0){
                             if(percentTest(stats[1])){
-                                this.levelString += "4";
-                            } else {
                                 this.levelString += "3";
+                            } else {
+                                this.levelString += "4";
                             }
                         } else {
                             this.levelString += "0";
@@ -98,7 +98,10 @@ public class LevelGenerator {
 
     private FileReader pickTemplate() throws FileNotFoundException {
         File dir = new File("LevelTemplates");
-        File tempFile = new File(dir.getAbsolutePath() + "/basic1");
+        Random rand = new Random();
+        int tempNum = rand.nextInt(4) + 1;
+        String tempName = "/temp" + tempNum;
+        File tempFile = new File(dir.getAbsolutePath() + tempName);
         FileReader template = new FileReader(tempFile);
         return template;
     }
@@ -110,12 +113,12 @@ public class LevelGenerator {
                  lower number means more grunts, higher number means more officers
         stats[2] is the minimum amount of enemy spawns
         */
-        int[] stats = {0, 0, 2};
+        int[] stats = {0, 0, 2}; //Default stats
         
         stats[0] += difficulty * 10;
         stats[1] += difficulty * 10;
-        if(difficulty > 8){
-            stats[2] += 8;
+        if(difficulty > 5){
+            stats[2] += 5;
         } else {
             stats[2] += difficulty;
         }
@@ -124,6 +127,9 @@ public class LevelGenerator {
     }
 
     public void generateLevel(int difficulty, int levelNum) {
+        if(difficulty > 10){
+            difficulty = 10;
+        }
         File dir = new File("Levels");
         String singleDigitZero = "";
         if(levelNum < 10){

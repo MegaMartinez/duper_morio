@@ -15,7 +15,6 @@ public class Jumper extends Enemy {
 	
 	private static final double GUNNER_HORI_SPEED = 2.5;
 	private static final double GUNNER_JUMP_SPEED = 14;
-//	private static final int JUMP_COOLDOWN = 100;
 	private static final int SHOOT_COOLDOWN = 150;
 	
 	private int ticksUntilShoot;
@@ -56,7 +55,7 @@ public class Jumper extends Enemy {
 			if(bullets.get(k).checkCollision(hero)) {
 				this.bullets.remove(k);
 				if(hero.getIsPoweredUp() == false) {
-					hero.respawn();
+					hero.respawn(true);
 				}
 			} else if(this.bullets.get(k).getX() <= 0 || this.bullets.get(k).getX() >= 1408 ||
 					this.bullets.get(k).getY() <= 0 || this.bullets.get(k).getY() >= 768) {

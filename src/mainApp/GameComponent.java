@@ -2,11 +2,12 @@ package mainApp;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.LinkedList;
+
 import java.util.Scanner;
 
 import javax.swing.JComponent;
@@ -33,6 +34,7 @@ public class GameComponent extends JComponent {
 	private int frameWidth;
 	private int frameHeight;
 	private int score;
+	private Rectangle2D.Double backgroundRect;
 	
 	public GameComponent(int frameWidth, int frameHeight) {
 		this.hero = new Hero();
@@ -44,6 +46,7 @@ public class GameComponent extends JComponent {
 		this.powerUps = new ArrayList<PowerUp>();
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
+		this.backgroundRect = new Rectangle2D.Double(BLOCK_OFFSET, BLOCK_OFFSET, frameWidth - (BLOCK_OFFSET * 2), frameHeight - (BLOCK_OFFSET * 2));
 		this.setScore(0);
 		
 		File dir = new File("Levels");
@@ -80,6 +83,9 @@ public class GameComponent extends JComponent {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
+		Color backgroundBlue = new Color(156, 252, 240, 255);
+		g2.setColor(backgroundBlue);
+		g2.fill(backgroundRect);
 		for(Wall wall : this.walls) {
 			wall.drawOn(g2);
 		}
@@ -141,6 +147,10 @@ public class GameComponent extends JComponent {
 	 * Restrictions: Files have to be premade with the correct formatting and number of characters for the method to work properly.
 	 */
 	public void loadLevel() {
+		if(levelNum == 16){
+			System.out.println("YOU WIN!!");
+			System.exit(1);
+		}
 		FileReader file = null;
 		try {
 		file = new FileReader(this.levels.get(this.levelNum - 1));
@@ -200,32 +210,12 @@ public class GameComponent extends JComponent {
 						this.powerUps.add(newPowerUp);
 						continuousWall = false;
 						break;
+					case 6:
+						this.hero.startingX = xStart;
+						this.hero.startingY = yStart;
+						this.hero.respawn(false);
 
 				} xStart += BLOCK_OFFSET;
-				
-				// if(Integer.parseInt(ID) == 1) {
-				// 	if(continuousWall) {
-				// 		this.walls.get(this.walls.size()-1).extend();
-				// 	} else {
-				// 		Wall newWall = new Wall(xStart, yStart);
-				// 		this.walls.add(newWall);
-				// 		continuousWall = true;
-				// 	}
-				// } else if(Integer.parseInt(ID) == 2) {
-				// 	Bomb newBomb = new Bomb(xStart, yStart);
-				// 	this.bombs.add(newBomb);
-				// 	continuousWall = false;
-				// } else if(Integer.parseInt(ID) == 3) {
-				// 	Enemy newEnemy = new Enemy(xStart, yStart, "Grunt");
-				// 	this.enemies.add(newEnemy);
-				// 	continuousWall = false;
-				// } else if(Integer.parseInt(ID) == 4) {
-				// 	Enemy newEnemy = new Enemy(xStart, yStart, "Officer");
-				// 	this.enemies.add(newEnemy);
-				// 	continuousWall = false;
-				// } else {
-				// 	continuousWall = false;
-				// } xStart += 50;
 			}
 
 			xStart = BLOCK_OFFSET;
@@ -233,6 +223,7 @@ public class GameComponent extends JComponent {
 
 			continuousWall = false;
 		}
+		scanner.close();
 		
 	}
 

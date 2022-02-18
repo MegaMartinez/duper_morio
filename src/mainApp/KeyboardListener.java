@@ -2,7 +2,6 @@ package mainApp;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
 
 /**
  * Class: KeyboardListener
@@ -26,21 +25,7 @@ public class KeyboardListener implements KeyListener {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-//		int keyCode = e.getKeyCode();
-//		switch(keyCode) {
-//			case KeyEvent.VK_LEFT:
-//				System.out.println("Left key typed.");
-//				this.component.moveHero('L');
-//				break;
-//			case KeyEvent.VK_RIGHT:
-//				System.out.println("Right key typed.");
-//				this.component.moveHero('R');
-//				break;
-//			case KeyEvent.VK_UP:
-//				System.out.println("Up key typed.");
-//				this.component.moveHero('L');
-//				break;
-//		}
+		return;
 	}
 
 	@Override
@@ -58,9 +43,6 @@ public class KeyboardListener implements KeyListener {
 		case KeyEvent.VK_UP:
 			this.component.moveHero('U');
 			break;
-//		case KeyEvent.VK_DOWN:
-//			this.component.moveHero('D');
-//			break;
 		}
 	}
 
@@ -79,12 +61,8 @@ public class KeyboardListener implements KeyListener {
 			} this.right = false;
 			break;
 		case KeyEvent.VK_UP:
-//			this.component.moveHero('U');
 			this.component.moveHero('|');
 			break;
-//		case KeyEvent.VK_DOWN:
-//			this.component.moveHero('|');
-//			break;
 
 		case KeyEvent.VK_U:
 			this.component.changeLevel(true);

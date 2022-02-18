@@ -1,9 +1,7 @@
 package mainApp;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.awt.geom.Rectangle2D;
 
 public class PowerUp extends Wall {
 
@@ -15,13 +13,10 @@ public class PowerUp extends Wall {
 		this.xPos = x + POWERUP_WIDTH/2;
 		this.yPos = y + POWERUP_HEIGHT/2;
 		this.image = Toolkit.getDefaultToolkit().getImage("images\\stor.png");
-//		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, POWERUP_WIDTH, POWERUP_HEIGHT);
 	}
 	
 	@Override
 	public void drawOn(Graphics2D g2) {
-//		g2.setColor(Color.PINK);
-//		g2.fill(rect);
 		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 	
