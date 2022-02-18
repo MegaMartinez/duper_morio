@@ -2,6 +2,7 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
 
@@ -22,12 +23,14 @@ public class Bomb extends Wall {
 		super(x, y);
 		this.xPos = x + BOMB_WIDTH/2;
 		this.yPos = y + BOMB_HEIGHT/2;
+		this.image = Toolkit.getDefaultToolkit().getImage("images\\coin.png");
 		this.rect = new Rectangle2D.Double(this.xPos, this.yPos, BOMB_WIDTH, BOMB_HEIGHT);
 	}
 	
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(Color.YELLOW);
-		g2.fill(rect);
+//		g2.setColor(Color.YELLOW);
+//		g2.fill(rect);
+		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 	
 	public int getScore() {return BOMB_SCORE;}

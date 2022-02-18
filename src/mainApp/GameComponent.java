@@ -50,10 +50,6 @@ public class GameComponent extends JComponent {
 		for(File level : dir.listFiles()) {
 			this.levels.add(level.getAbsolutePath());
 		}
-		File dir2 = new File("images");
-		for(File image : dir2.listFiles()) {
-			System.out.println(image.getAbsolutePath());
-		}
 	}
 	
 	public void updateState() {
@@ -123,7 +119,7 @@ public class GameComponent extends JComponent {
 			if(enemies.get(k).checkCollision(this.hero)) {
 				this.score += enemies.get(k).getScore();
 				if(this.gunners.contains(enemies.get(k))) {
-					this.gunners.remove(k);
+					this.gunners.remove(enemies.get(k));
 				}
 				enemies.remove(k);
 			}
@@ -156,6 +152,7 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
+		this.gunners.clear();
 		this.powerUps.clear();
 		this.hero.makePoweredUp(false);
 		this.walls.add(new Wall(0, 0, this.frameWidth, BLOCK_OFFSET));

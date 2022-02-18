@@ -1,6 +1,7 @@
 package mainApp;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
 
 /**
@@ -35,6 +36,7 @@ public class Enemy extends Character {
 		this.originalXVelocity = HORI_SPEED;
 		this.yVelocity = 0;
 		this.ticksUntilJump = 0;
+		this.image = Toolkit.getDefaultToolkit().getImage("images\\goomba.png");
 		this.score = ENEMY_SCORE;
 	}
 	
@@ -60,11 +62,12 @@ public class Enemy extends Character {
 		}
 	}
 	
-	@Override
-	public void drawOn(Graphics2D g2) {
-		g2.setColor(Color.GREEN);
-		g2.fill(rect);
-	}
+//	@Override
+//	public void drawOn(Graphics2D g2) {
+////		g2.setColor(Color.GREEN);
+////		g2.fill(rect);
+//		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
+//	}
 	
 //	public Color getColor() {return this.color;}
 	

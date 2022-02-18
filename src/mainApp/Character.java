@@ -2,6 +2,7 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
@@ -21,7 +22,7 @@ public abstract class Character {
 	protected double yPos;
 	protected double xVelocity;
 	protected double yVelocity;
-	protected String image = "Unimplemented";
+	protected Image image;
 	protected Rectangle2D.Double rect;
 	protected boolean isFalling;
 	
@@ -54,7 +55,8 @@ public abstract class Character {
 	}
 	
 	public void drawOn(Graphics2D g2) {
-		g2.fill(rect);
+//		g2.fill(rect);
+		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 	
 	/**

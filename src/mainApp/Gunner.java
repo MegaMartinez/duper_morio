@@ -2,6 +2,7 @@ package mainApp;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 /**
@@ -26,17 +27,20 @@ public class Gunner extends Enemy {
 		this.originalXVelocity = GUNNER_HORI_SPEED;
 		this.ticksUntilJump = 0;
 		this.ticksUntilShoot = 0;
+		this.image = Toolkit.getDefaultToolkit().getImage("images\\winged_goomba.png");
 		this.bullets = new ArrayList<Bullet>();
 	}
 	
 	@Override
 	public void drawOn(Graphics2D g2) {
+		super.drawOn(g2);
 		g2.setColor(Color.BLACK);
 		for(Bullet bullet : this.bullets) {
 			bullet.drawOn(g2);
 		}
-		g2.setColor(Color.BLUE);
-		g2.fill(rect);
+//		g2.setColor(Color.BLUE);
+//		g2.fill(rect);
+//		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 	
 //	@Override

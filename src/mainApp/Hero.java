@@ -30,7 +30,8 @@ public class Hero extends Character {
 	private boolean isPoweredUp;
 	private int powerUpFrameCount;
 	private Color color;
-	private Image image;
+	private Image normalImage;
+	private Image superImage;
 	
 	
 	private int lives;
@@ -42,7 +43,10 @@ public class Hero extends Character {
 		this.lives = LIVES;
 		this.isPoweredUp = false;
 		this.powerUpFrameCount = 0;
-		this.color = Color.BLACK;
+		this.normalImage = Toolkit.getDefaultToolkit().getImage("images\\morio.png");
+		this.superImage = Toolkit.getDefaultToolkit().getImage("images\\strong_morio.png");
+		this.image = normalImage;
+//		this.color = Color.BLACK;
 //		this.image = Toolkit.getDefaultToolkit().getImage("images\\grass_tile.png");
 //		this.image = new Image("images\grass_tile.png");
 	}
@@ -55,7 +59,8 @@ public class Hero extends Character {
 			if(this.powerUpFrameCount > INVICIBILITY_TIME) {
 				this.isPoweredUp = false;
 				this.powerUpFrameCount = 0;
-				this.color = Color.BLACK;
+//				this.color = Color.BLACK;
+				this.image = this.normalImage;
 			}
 		}
 	}
@@ -84,10 +89,10 @@ public class Hero extends Character {
 	
 	@Override
 	public void drawOn(Graphics2D g2) {
-		g2.setColor(this.color);
-		g2.fill(rect);
+//		g2.setColor(this.color);
+//		g2.fill(rect);
 //		ImageObserver observer = null;
-//		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
+		g2.drawImage(this.image, (int) this.xPos, (int) this.yPos, null);
 	}
 
 	public int getLives() {return lives;}
@@ -98,12 +103,14 @@ public class Hero extends Character {
 		if(yes == false) {
 			this.isPoweredUp = false;
 			this.powerUpFrameCount = 0;
-			this.color = Color.BLACK;
+//			this.color = Color.BLACK;
+			this.image = this.normalImage;
 			return;
 		}
 		this.isPoweredUp = true;
 		this.powerUpFrameCount = 0;
-		this.color = Color.ORANGE;
+//		this.color = Color.ORANGE;
+		this.image = this.superImage;
 	}
 	
 	public boolean getIsPoweredUp() {return this.isPoweredUp;}
