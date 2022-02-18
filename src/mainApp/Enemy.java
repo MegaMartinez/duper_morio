@@ -15,6 +15,7 @@ public class Enemy extends Character {
 	private static final double HORI_SPEED = 6;
 	private static final double ENEMY_WIDTH = 32;
 	private static final double ENEMY_HEIGHT = 32;
+	private static final int ENEMY_SCORE
 	
 	private int direction = -1;
 	
@@ -72,6 +73,8 @@ public class Enemy extends Character {
 			this.direction *= -1;
 		}
 	}
+	
+	public int getScore() {return ENEMY_SCORE;}
 //		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
 //		if(measureBox.intersects(wall.rect)) {
 //			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {

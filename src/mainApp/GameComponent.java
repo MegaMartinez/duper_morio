@@ -103,7 +103,7 @@ public class GameComponent extends JComponent {
 		for(int k = 0; k < this.bombs.size(); k++) {
 			if(bombs.get(k).checkCollision(this.hero)) {
 				bombs.remove(k);
-				this.score += 50;
+				this.score += bombs.get(k).getScore();
 			}
 		}
 		for(int k = 0; k < this.powerUps.size(); k++) {
@@ -117,7 +117,7 @@ public class GameComponent extends JComponent {
 		for(int k = 0; k < this.enemies.size(); k++) {
 			if(enemies.get(k).checkCollision(this.hero)) {
 				enemies.remove(k);
-				this.score += 100;
+				this.score += enemies.get(k).getScore();
 			}
 		}
 	}

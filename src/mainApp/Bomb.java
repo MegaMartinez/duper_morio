@@ -14,8 +14,9 @@ import java.awt.geom.Rectangle2D.Double;
 
 public class Bomb extends Wall {
 	
-	private final double BOMB_WIDTH = 32;
-	private final double BOMB_HEIGHT = 32;
+	private static final double BOMB_WIDTH = 32;
+	private static final double BOMB_HEIGHT = 32;
+	private static final int BOMB_SCORE = 50;
 	
 	public Bomb(int x, int y) {
 		super(x, y);
@@ -28,6 +29,8 @@ public class Bomb extends Wall {
 		g2.setColor(Color.YELLOW);
 		g2.fill(rect);
 	}
+	
+	public int getScore() {return BOMB_SCORE;}
 	
 //	public boolean checkCollision(Hero hero) {
 //		return this.rect.intersects(hero.rect);
