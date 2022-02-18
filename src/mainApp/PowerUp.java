@@ -25,7 +25,7 @@ public class PowerUp extends Wall {
 	@Override
 	public boolean checkCollision(Hero hero) {
 		if(super.checkCollision(hero)) {
-			hero.makePoweredUp();
+			hero.makePoweredUp(true);
 			return true;
 		} return false;
 		

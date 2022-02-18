@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D.Double;
 
 public abstract class Character {
 	
-	private final double Y_ACCELERATION = 0.2;
+	private final double Y_ACCELERATION = 0.3;
 
 	protected double xPos;
 	protected double yPos;

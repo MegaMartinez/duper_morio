@@ -22,8 +22,8 @@ public class Hero extends Character {
 	private static final int STARTING_X = 300;
 	private static final int STARTING_Y = 300;
 	private static final int INVICIBILITY_TIME = 200;
-	private static final double HERO_WIDTH = 50;
-	private static final double HERO_HEIGHT = 50;
+	private static final double HERO_WIDTH = 32;
+	private static final double HERO_HEIGHT = 32;
 	
 	private double startingX;
 	private double startingY;
@@ -49,11 +49,13 @@ public class Hero extends Character {
 	@Override
 	public void update() {
 		super.update();
-		this.powerUpFrameCount++;
-		if(this.powerUpFrameCount > INVICIBILITY_TIME) {
-			this.isPoweredUp = false;
-			this.powerUpFrameCount = 0;
-			this.color = Color.BLACK;
+		if(this.isPoweredUp) {
+			this.powerUpFrameCount++;
+			if(this.powerUpFrameCount > INVICIBILITY_TIME) {
+				this.isPoweredUp = false;
+				this.powerUpFrameCount = 0;
+				this.color = Color.BLACK;
+			}
 		}
 	}
 	
@@ -91,7 +93,13 @@ public class Hero extends Character {
 
 	public void setLives(int lives) {this.lives = lives;}
 	
-	public void makePoweredUp() {
+	public void makePoweredUp(boolean yes) {
+		if(yes == false) {
+			this.isPoweredUp = false;
+			this.powerUpFrameCount = 0;
+			this.color = Color.BLACK;
+			return;
+		}
 		this.isPoweredUp = true;
 		this.powerUpFrameCount = 0;
 		this.color = Color.ORANGE;

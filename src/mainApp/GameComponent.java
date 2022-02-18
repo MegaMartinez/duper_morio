@@ -144,6 +144,8 @@ public class GameComponent extends JComponent {
 		this.walls.clear();
 		this.bombs.clear();
 		this.enemies.clear();
+		this.powerUps.clear();
+		this.hero.makePoweredUp(false);
 		this.walls.add(new Wall(0, 0, this.frameWidth, BLOCK_OFFSET));
 		this.walls.add(new Wall(0, this.frameHeight - BLOCK_OFFSET, this.frameWidth, BLOCK_OFFSET));
 		this.walls.add(new Wall(0, BLOCK_OFFSET, BLOCK_OFFSET, this.frameHeight - BLOCK_OFFSET));

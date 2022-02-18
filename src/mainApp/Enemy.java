@@ -13,8 +13,8 @@ import java.awt.geom.Rectangle2D;
 public class Enemy extends Character {
 	
 	private static final double HORI_SPEED = 6;
-	private static final double ENEMY_WIDTH = 50;
-	private static final double ENEMY_HEIGHT = 50;
+	private static final double ENEMY_WIDTH = 32;
+	private static final double ENEMY_HEIGHT = 32;
 	
 	private int direction = -1;
 	
