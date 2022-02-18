@@ -27,6 +27,7 @@ public class GameComponent extends JComponent {
 	private ArrayList<Wall> walls;
 	private ArrayList<Bomb> bombs;
 	private ArrayList<Enemy> enemies;
+	private ArrayList<Jumper> gunners;
 	private ArrayList<PowerUp> powerUps;
 	private int levelNum = 1;
 	private int frameWidth;
@@ -39,6 +40,7 @@ public class GameComponent extends JComponent {
 		this.walls = new ArrayList<Wall>();
 		this.bombs = new ArrayList<Bomb>();
 		this.enemies = new ArrayList<Enemy>();
+		this.gunners = new ArrayList<Jumper>();
 		this.powerUps = new ArrayList<PowerUp>();
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
@@ -58,6 +60,8 @@ public class GameComponent extends JComponent {
 		this.hero.update();
 		for(Enemy enemy : this.enemies) {
 			enemy.update();
+		} for(Jumper gunner : this.gunners) {
+			gunner.updateBullets(this.hero);
 		}
 	}
 	
@@ -102,8 +106,8 @@ public class GameComponent extends JComponent {
 		
 		for(int k = 0; k < this.bombs.size(); k++) {
 			if(bombs.get(k).checkCollision(this.hero)) {
-				bombs.remove(k);
 				this.score += bombs.get(k).getScore();
+				bombs.remove(k);
 			}
 		}
 		for(int k = 0; k < this.powerUps.size(); k++) {
@@ -111,13 +115,13 @@ public class GameComponent extends JComponent {
 				powerUps.remove(k);
 			}
 		}
-//		for (Enemy enemy : enemies) {
-//			enemy.checkCollision(hero);
-//		}
 		for(int k = 0; k < this.enemies.size(); k++) {
 			if(enemies.get(k).checkCollision(this.hero)) {
-				enemies.remove(k);
 				this.score += enemies.get(k).getScore();
+				if(this.gunners.contains(enemies.get(k))) {
+					this.gunners.remove(k);
+				}
+				enemies.remove(k);
 			}
 		}
 	}
@@ -182,6 +186,7 @@ public class GameComponent extends JComponent {
 					case 3:
 						Jumper newJumper = new Jumper(xStart, yStart);
 						this.enemies.add(newJumper);
+						this.gunners.add(newJumper);
 						continuousWall = false;
 						break;
 					case 4:

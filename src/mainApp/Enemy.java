@@ -17,7 +17,9 @@ public class Enemy extends Character {
 	private static final double ENEMY_HEIGHT = 32;
 	private static final int ENEMY_SCORE = 100;
 	
-	private int direction = -1;
+	protected double originalXVelocity;
+	protected int direction = -1;
+	protected int score;
 	
 //	private static final Color GRUNT_COLOR = Color.BLUE;
 //	private static final Color OFFICER_COLOR = Color.GREEN;
@@ -27,7 +29,9 @@ public class Enemy extends Character {
 	public Enemy(double x, double y) {
 		super(x, y, ENEMY_WIDTH, ENEMY_HEIGHT);
 		this.xVelocity = HORI_SPEED;
+		this.originalXVelocity = HORI_SPEED;
 		this.yVelocity = 0;
+		this.score = ENEMY_SCORE;
 	}
 	
 //	public Enemy(double x, double y, String type) {
@@ -60,21 +64,21 @@ public class Enemy extends Character {
 		} return false;
 	}
 	
-	@Override
-	public void update() {
-		super.update();
-	}
+//	@Override
+//	public void update() {
+//		super.update();
+//	}
 	
 	@Override
 	public void platformCollide(Wall wall) {
 		super.platformCollide(wall);
 		if(this.xVelocity == 0) {
-			this.xVelocity = HORI_SPEED * this.direction;
+			this.xVelocity = this.originalXVelocity * this.direction;
 			this.direction *= -1;
 		}
 	}
 	
-	public int getScore() {return ENEMY_SCORE;}
+	public int getScore() {return this.score;}
 //		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
 //		if(measureBox.intersects(wall.rect)) {
 //			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {

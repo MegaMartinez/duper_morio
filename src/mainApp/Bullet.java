@@ -1,34 +1,34 @@
 package mainApp;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Rectangle2D.Double;
 
-public class Bullet {
+public class Bullet extends Wall {
 	
-	private static final int BULLET_SIZE = 8;
-	private static final double BULLET_SPEED = 5;
+	private static final double BULLET_SIZE = 8;
+	private static final double BULLET_SPEED = 3;
 	
-	private double xPos;
-	private double yPos;
+	private double angle;
 	private double xVelocity;
 	private double yVelocity;
-	protected Rectangle2D.Double rect;
 	
-	public Bullet(double x, double y) {
-		this.xPos = x;
-		this.yPos = y;
-		this.xVelocity = 5;
-		this.yVelocity = 5;
-		this.rect = new Rectangle2D.Double(x, y, BULLET_SIZE, BULLET_SIZE);
+	public Bullet(double x, double y, double angle) {
+		super((int) x, (int) y, BULLET_SIZE, BULLET_SIZE);
+		this.xVelocity = BULLET_SPEED * Math.cos(angle);
+		this.yVelocity = BULLET_SPEED * Math.sin(angle);
 	}
 	
 	public void update() {
 		this.xPos += this.xVelocity;
 		this.yPos += this.yVelocity;
+		this.rect.x = this.xPos;
+		this.rect.y = this.yPos;
 	}
 	
-	public void calculateSpeed(double x, double y) {
-		
+	public void drawOn(Graphics2D g2) {
+		g2.fill(rect);
 	}
 	
 	public double getX() {return this.xPos;}

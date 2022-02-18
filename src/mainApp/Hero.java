@@ -21,7 +21,7 @@ public class Hero extends Character {
 	private static final int LIVES = 3;
 	private static final int STARTING_X = 300;
 	private static final int STARTING_Y = 300;
-	private static final int INVICIBILITY_TIME = 200;
+	private static final int INVICIBILITY_TIME = 2000;
 	private static final double HERO_WIDTH = 32;
 	private static final double HERO_HEIGHT = 32;
 	
