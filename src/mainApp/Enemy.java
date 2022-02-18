@@ -48,10 +48,14 @@ public class Enemy extends Character {
 	
 //	public Color getColor() {return this.color;}
 	
-	public void checkCollision(Hero hero) {
+	public boolean checkCollision(Hero hero) {
 		if (this.rect.intersects(hero.rect)) {
-			hero.respawn();
-		}
+			if(hero.getIsPoweredUp()) {
+				return true;
+			} else {
+				hero.respawn();
+			}
+		} return false;
 	}
 	
 	@Override

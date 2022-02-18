@@ -27,6 +27,7 @@ public class GameComponent extends JComponent {
 	private ArrayList<Wall> walls;
 	private ArrayList<Bomb> bombs;
 	private ArrayList<Enemy> enemies;
+	private ArrayList<PowerUp> powerUps;
 	private int levelNum = 1;
 	private int frameWidth;
 	private int frameHeight;
@@ -37,6 +38,7 @@ public class GameComponent extends JComponent {
 		this.walls = new ArrayList<Wall>();
 		this.bombs = new ArrayList<Bomb>();
 		this.enemies = new ArrayList<Enemy>();
+		this.powerUps = new ArrayList<PowerUp>();
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
 		
@@ -78,6 +80,9 @@ public class GameComponent extends JComponent {
 		for(Bomb bomb : this.bombs) {
 			bomb.drawOn(g2);
 		}
+		for(PowerUp powerUp : this.powerUps) {
+			powerUp.drawOn(g2);
+		}
 		for(Enemy enemy : this.enemies) {
 			enemy.drawOn(g2);
 		}
@@ -92,15 +97,24 @@ public class GameComponent extends JComponent {
 				enemy.platformCollide(wall);
 			}
 		}
-
+		
 		for(int k = 0; k < this.bombs.size(); k++) {
 			if(bombs.get(k).checkCollision(this.hero)) {
 				bombs.remove(k);
 			}
 		}
-		
-		for (Enemy enemy : enemies) {
-			enemy.checkCollision(hero);
+		for(int k = 0; k < this.powerUps.size(); k++) {
+			if(powerUps.get(k).checkCollision(this.hero)) {
+				powerUps.remove(k);
+			}
+		}
+//		for (Enemy enemy : enemies) {
+//			enemy.checkCollision(hero);
+//		}
+		for(int k = 0; k < this.enemies.size(); k++) {
+			if(enemies.get(k).checkCollision(this.hero)) {
+				enemies.remove(k);
+			}
 		}
 	}
 	
@@ -160,21 +174,22 @@ public class GameComponent extends JComponent {
 						continuousWall = false;
 						break;
 					case 3:
-						{
 						Jumper newJumper = new Jumper(xStart, yStart);
 						this.enemies.add(newJumper);
 						continuousWall = false;
-						}
 						break;
 					case 4:
-						{
 						Enemy newEnemy = new Enemy(xStart, yStart);
 						this.enemies.add(newEnemy);
 						continuousWall = false;
-						}
+						break;
+					case 5:
+						PowerUp newPowerUp = new PowerUp(xStart, yStart);
+						this.powerUps.add(newPowerUp);
+						continuousWall = false;
 						break;
 
-				} xStart += 64;
+				} xStart += BLOCK_OFFSET;
 				
 				// if(Integer.parseInt(ID) == 1) {
 				// 	if(continuousWall) {
@@ -201,8 +216,8 @@ public class GameComponent extends JComponent {
 				// } xStart += 50;
 			}
 
-			xStart = 64;
-			yStart += 64;
+			xStart = BLOCK_OFFSET;
+			yStart += BLOCK_OFFSET;
 
 			continuousWall = false;
 		}
