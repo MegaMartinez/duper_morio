@@ -14,11 +14,14 @@ public class KeyboardListener implements KeyListener {
 
 	private GameComponent component;
 	private int levelNum;
+	boolean left;
+	boolean right;
 	
 	public KeyboardListener(GameComponent component) {
 		this.component = component;
 		this.levelNum = 1;
-		
+		this.left = false;
+		this.right = false;
 	}
 	
 	@Override
@@ -46,9 +49,11 @@ public class KeyboardListener implements KeyListener {
 		switch(keyCode) {
 		case KeyEvent.VK_LEFT:
 			this.component.moveHero('L');
+			this.left = true;
 			break;
 		case KeyEvent.VK_RIGHT:
 			this.component.moveHero('R');
+			this.right = true;
 			break;
 		case KeyEvent.VK_UP:
 			this.component.moveHero('U');
@@ -64,10 +69,14 @@ public class KeyboardListener implements KeyListener {
 		int keyCode = e.getKeyCode();
 		switch(keyCode) {
 		case KeyEvent.VK_LEFT:
-			this.component.moveHero('-');
+			if(this.right == false) {
+				this.component.moveHero('-');
+			} this.left = false;
 			break;
 		case KeyEvent.VK_RIGHT:
-			this.component.moveHero('-');
+			if(this.left == false) {
+				this.component.moveHero('-');
+			} this.right = false;
 			break;
 		case KeyEvent.VK_UP:
 //			this.component.moveHero('U');
