@@ -16,9 +16,12 @@ public class Enemy extends Character {
 	private static final double ENEMY_WIDTH = 32;
 	private static final double ENEMY_HEIGHT = 32;
 	private static final int ENEMY_SCORE = 100;
+	protected static final int JUMP_COOLDOWN = 100;
+	private static final int ENEMY_JUMP_SPEED = 14;
 	
 	protected double originalXVelocity;
 	protected int direction = -1;
+	protected int ticksUntilJump;
 	protected int score;
 	
 //	private static final Color GRUNT_COLOR = Color.BLUE;
@@ -31,6 +34,7 @@ public class Enemy extends Character {
 		this.xVelocity = HORI_SPEED;
 		this.originalXVelocity = HORI_SPEED;
 		this.yVelocity = 0;
+		this.ticksUntilJump = 0;
 		this.score = ENEMY_SCORE;
 	}
 	
@@ -45,6 +49,16 @@ public class Enemy extends Character {
 //			this.color = OFFICER_COLOR;
 //		}
 //	}
+	
+	@Override
+	public void update() {
+	super.update();
+	this.ticksUntilJump += 1;
+	if(this.ticksUntilJump >= JUMP_COOLDOWN) {
+		this.yVelocity = -ENEMY_JUMP_SPEED;
+		this.ticksUntilJump = 0;
+		}
+	}
 	
 	@Override
 	public void drawOn(Graphics2D g2) {
@@ -64,11 +78,6 @@ public class Enemy extends Character {
 		} return false;
 	}
 	
-//	@Override
-//	public void update() {
-//		super.update();
-//	}
-	
 	@Override
 	public void platformCollide(Wall wall) {
 		super.platformCollide(wall);
@@ -79,30 +88,5 @@ public class Enemy extends Character {
 	}
 	
 	public int getScore() {return this.score;}
-//		Rectangle2D.Double measureBox = new Rectangle2D.Double(this.rect.x + this.xVelocity, this.rect.y, this.rect.width, this.rect.height);
-//		if(measureBox.intersects(wall.rect)) {
-//			if(measureBox.x + measureBox.width >= wall.xPos && measureBox.x + measureBox.width < wall.xPos + wall.rect.width) {
-//				this.xPos = wall.xPos - this.rect.width;
-//			} else {
-//				this.xPos = wall.xPos + wall.rect.width;
-//			}
-//			measureBox.x -= this.xVelocity;
-//			this.xVelocity = -this.xVelocity;
-//		} else {
-//			measureBox.x -= this.xVelocity;
-//		} measureBox.y += this.yVelocity;
-//		if(measureBox.intersects(wall.rect)) {
-//			if(measureBox.y + measureBox.height >= wall.yPos && measureBox.y + measureBox.height < wall.yPos + wall.rect.height) {
-//				this.yPos = wall.yPos - this.rect.height;
-//				this.isFalling = false;
-//			} else {
-//				this.yPos = wall.yPos + wall.rect.height;
-//				this.isFalling = true;
-//			}
-//			this.yVelocity = 0;
-//		} else {
-//			this.isFalling = true;
-//		}
-//	}
 
 }

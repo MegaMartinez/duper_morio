@@ -27,7 +27,7 @@ public class GameComponent extends JComponent {
 	private ArrayList<Wall> walls;
 	private ArrayList<Bomb> bombs;
 	private ArrayList<Enemy> enemies;
-	private ArrayList<Jumper> gunners;
+	private ArrayList<Gunner> gunners;
 	private ArrayList<PowerUp> powerUps;
 	private int levelNum = 1;
 	private int frameWidth;
@@ -40,7 +40,7 @@ public class GameComponent extends JComponent {
 		this.walls = new ArrayList<Wall>();
 		this.bombs = new ArrayList<Bomb>();
 		this.enemies = new ArrayList<Enemy>();
-		this.gunners = new ArrayList<Jumper>();
+		this.gunners = new ArrayList<Gunner>();
 		this.powerUps = new ArrayList<PowerUp>();
 		this.frameWidth = frameWidth;
 		this.frameHeight = frameHeight;
@@ -64,7 +64,7 @@ public class GameComponent extends JComponent {
 		this.hero.update();
 		for(Enemy enemy : this.enemies) {
 			enemy.update();
-		} for(Jumper gunner : this.gunners) {
+		} for(Gunner gunner : this.gunners) {
 			gunner.updateBullets(this.hero);
 		}
 	}
@@ -188,9 +188,9 @@ public class GameComponent extends JComponent {
 						continuousWall = false;
 						break;
 					case 3:
-						Jumper newJumper = new Jumper(xStart, yStart);
-						this.enemies.add(newJumper);
-						this.gunners.add(newJumper);
+						Gunner newGunner = new Gunner(xStart, yStart);
+						this.enemies.add(newGunner);
+						this.gunners.add(newGunner);
 						continuousWall = false;
 						break;
 					case 4:

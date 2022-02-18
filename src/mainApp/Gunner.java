@@ -11,17 +11,16 @@ import java.util.ArrayList;
  * 			update method to jump at certain time intervals.
  */
 
-public class Jumper extends Enemy {
+public class Gunner extends Enemy {
 	
 	private static final double GUNNER_HORI_SPEED = 2.5;
-	private static final double GUNNER_JUMP_SPEED = 14;
-//	private static final int JUMP_COOLDOWN = 100;
+	private static final double GUNNER_JUMP_SPEED = 12;
 	private static final int SHOOT_COOLDOWN = 150;
 	
 	private int ticksUntilShoot;
 	private ArrayList<Bullet> bullets;
 	
-	public Jumper(double x, double y) {
+	public Gunner(double x, double y) {
 		super(x, y);
 		this.xVelocity = GUNNER_HORI_SPEED;
 		this.originalXVelocity = GUNNER_HORI_SPEED;
@@ -40,15 +39,15 @@ public class Jumper extends Enemy {
 		g2.fill(rect);
 	}
 	
-	@Override
-	public void update() {
-		super.update();
-		this.ticksUntilJump += 1;
-		if(this.ticksUntilJump >= JUMP_COOLDOWN) {
-			this.yVelocity = -GUNNER_JUMP_SPEED;
-			this.ticksUntilJump = 0;
-		}
-	}
+//	@Override
+//	public void update() {
+//		super.update();
+//		this.ticksUntilJump += 1;
+//		if(this.ticksUntilJump >= JUMP_COOLDOWN) {
+//			this.yVelocity = -GUNNER_JUMP_SPEED;
+//			this.ticksUntilJump = 0;
+//		}
+//	}
 	
 	public void updateBullets(Hero hero) {
 		for(int k = 0; k < this.bullets.size(); k++) {
@@ -83,7 +82,4 @@ public class Jumper extends Enemy {
 			return true;
 		} return false;
 	}
-	
-	
-
 }
