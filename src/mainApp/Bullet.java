@@ -17,6 +17,8 @@ public class Bullet {
 	public Bullet(double x, double y) {
 		this.xPos = x;
 		this.yPos = y;
+		this.xVelocity = 5;
+		this.yVelocity = 5;
 		this.rect = new Rectangle2D.Double(x, y, BULLET_SIZE, BULLET_SIZE);
 	}
 	
@@ -28,5 +30,9 @@ public class Bullet {
 	public void calculateSpeed(double x, double y) {
 		
 	}
+	
+	public double getX() {return this.xPos;}
+	
+	public double getY() {return this.yPos;}
 
 }
